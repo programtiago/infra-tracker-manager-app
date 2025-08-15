@@ -11,4 +11,6 @@ VALUES
 ('a02817b0-d167-4840-a7a9-a7d3ef92e87e', 'Desktop', CURRENT_TIMESTAMP, true),
 ('6c46430f-e411-46a1-969f-f5d9ba4fc416', 'Switch', CURRENT_TIMESTAMP, true),
 ('860eb5ca-4fad-429c-9203-0c581650f117', 'Mouse', CURRENT_TIMESTAMP, true),
-('60da8d60-770d-4c9c-a249-3f7da08cbaa2', 'Screen', CURRENT_TIMESTAMP, true);
+('60da8d60-770d-4c9c-a249-3f7da08cbaa2', 'Screen', CURRENT_TIMESTAMP, true),
+('25749fc9-3cae-41a7-a73c-6a4274d343f9', 'Keyboard', CURRENT_TIMESTAMP, true),
+('4bda014b-7446-4b16-8ed2-67d8b936b895', 'Scanner', CURRENT_TIMESTAMP, true);

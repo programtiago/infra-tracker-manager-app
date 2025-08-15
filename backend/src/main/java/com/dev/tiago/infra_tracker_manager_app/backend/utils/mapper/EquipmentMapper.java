@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -22,6 +24,14 @@ public class EquipmentMapper {
     public EquipmentDto toDto(Equipment equipment){
         if (equipment == null) return null;
 
+        UUID statusId = Optional.ofNullable(equipment.getStatus())
+                .map(StatusEquipment::getId)
+                .orElse(null);
+
+        UUID categoryId = Optional.ofNullable(equipment.getEquipmentType())
+                .map(EquipmentType::getId)
+                .orElse(null);
+
         return new EquipmentDto(
                 equipment.getId(),
                 equipment.getDescription(),
@@ -30,8 +40,8 @@ public class EquipmentMapper {
                 equipment.getSn(),
                 equipment.isActive(),
                 equipment.getCreatedAt(),
-                equipment.getStatus().getId(),
-                equipment.getEquipmentType().getId()
+                statusId,
+                categoryId
         );
     }
 
