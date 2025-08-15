@@ -38,9 +38,11 @@ public class Equipment {
     private String model;
     @Length(min = 4, max = 30, message = "The field 'sn' must be between 4 and 30 characters")
     private String sn;
-    @NotNull(message = "The field 'isActive' its mandatory.")
+    @NotNull(message = "The field 'is_active' its mandatory.")
+    @Column(name = "is_active", nullable = false)
     private boolean isActive;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @NotNull(message = "The field 'createdAt' its mandatory.")
+    @NotNull(message = "The field 'created_at' its mandatory.")
+    @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 }
