@@ -1,0 +1,46 @@
+package com.dev.tiago.infra_tracker_manager_app.backend.entity;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
+@Table(name = "TB_EQUIPMENT")
+public class Equipment {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id", nullable = false)
+    @NotNull
+    private UUID id;
+    @NotBlank(message = "The field 'description' its mandatory.")
+    @Length(min = 10, max = 150, message = "The field 'description' must be between 10 and 150 characters")
+    @Column(name = "description", nullable = false)
+    private String description;
+    @NotBlank(message = "The field 'brand' its mandatory.")
+    @Length(min = 4, max = 50, message = "The field 'brand' must be between 4 and 50 characters")
+    @Column(name = "brand", nullable = false)
+    private String brand;
+    @NotBlank(message = "The field 'model' its mandatory.")
+    @Length(min = 10, max = 50, message = "The field 'model' must be between 10 and 50 characters")
+    @Column(name = "model", nullable = false)
+    private String model;
+    @Length(min = 4, max = 30, message = "The field 'sn' must be between 4 and 30 characters")
+    private String sn;
+    @NotNull(message = "The field 'isActive' its mandatory.")
+    private boolean isActive;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @NotNull(message = "The field 'createdAt' its mandatory.")
+    private LocalDateTime createdAt;
+}
