@@ -46,12 +46,17 @@ public class Equipment {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    public Equipment(String description, String brand, String model, String sn, boolean isActive, LocalDateTime createdAt) {
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private StatusEquipment status;
+
+    public Equipment(String description, String brand, String model, String sn, boolean isActive, LocalDateTime createdAt, StatusEquipment status) {
         this.description = description;
         this.brand = brand;
         this.model = model;
         this.sn = sn;
         this.isActive = isActive;
         this.createdAt = createdAt;
+        this.status = status;
     }
 }

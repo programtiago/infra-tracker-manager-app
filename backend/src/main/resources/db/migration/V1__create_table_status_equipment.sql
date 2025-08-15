@@ -1,0 +1,6 @@
+CREATE TABLE TB_STATUS_EQUIPMENT (
+    id uuid PRIMARY KEY NOT NULL,
+    description VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE
+);

@@ -24,6 +24,7 @@ public record NewEquipmentRequestDto(
         @NotNull
         boolean isActive,
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        LocalDateTime createdAt
+        LocalDateTime createdAt,
+        UUID status_id
 
 ) { }

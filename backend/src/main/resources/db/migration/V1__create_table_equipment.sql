@@ -1,9 +1,0 @@
-CREATE TABLE TB_EQUIPMENT (
-    id uuid PRIMARY KEY NOT NULL,
-    description VARCHAR(150) NOT NULL,
-    brand VARCHAR(50) NOT NULL,
-    model VARCHAR(50) NOT NULL,
-    sn VARCHAR(30),
-    is_active BOOLEAN DEFAULT FALSE NOT NULL,
-    created_at TIMESTAMP NOT NULL
-);

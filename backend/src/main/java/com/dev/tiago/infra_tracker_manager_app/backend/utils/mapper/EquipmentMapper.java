@@ -1,14 +1,20 @@
 package com.dev.tiago.infra_tracker_manager_app.backend.utils.mapper;
 
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.Equipment;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.StatusEquipment;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.NewEquipmentRequestDto;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.EquipmentDto;
+import com.dev.tiago.infra_tracker_manager_app.backend.repository.StatusEquipmentRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class EquipmentMapper {
+
+    private final StatusEquipmentRepository statusEquipmentRepository;
 
     public EquipmentDto toDto(Equipment equipment){
         if (equipment == null) return null;
@@ -20,7 +26,8 @@ public class EquipmentMapper {
                 equipment.getModel(),
                 equipment.getSn(),
                 equipment.isActive(),
-                equipment.getCreatedAt()
+                equipment.getCreatedAt(),
+                equipment.getStatus().getId()
         );
     }
 
@@ -61,11 +68,15 @@ public class EquipmentMapper {
                 requestDto.model(),
                 requestDto.sn(),
                 requestDto.isActive(),
-                requestDto.createdAt()
+                requestDto.createdAt(),
+                requestDto.status_id()
         );
     }
 
     public Equipment toEntity(NewEquipmentRequestDto requestDto){
+        StatusEquipment status = statusEquipmentRepository.findById(requestDto.status_id())
+                .orElseThrow(() -> new IllegalArgumentException("Status not found."));
+
         return new Equipment(
                 requestDto.id(),
                 requestDto.description(),
@@ -73,7 +84,8 @@ public class EquipmentMapper {
                 requestDto.model(),
                 requestDto.sn(),
                 requestDto.isActive(),
-                requestDto.createdAt()
+                requestDto.createdAt(),
+                status
         );
     }
 }

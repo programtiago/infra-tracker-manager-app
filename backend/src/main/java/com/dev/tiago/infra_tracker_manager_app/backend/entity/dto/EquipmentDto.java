@@ -25,5 +25,6 @@ public record EquipmentDto(
         boolean isActive,
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         @NotNull(message = "The field 'createdAt' its mandatory.")
-        LocalDateTime createdAt
+        LocalDateTime createdAt,
+        UUID status_id
 ) { }
