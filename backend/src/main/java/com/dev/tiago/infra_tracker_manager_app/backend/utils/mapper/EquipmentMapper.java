@@ -1,9 +1,11 @@
 package com.dev.tiago.infra_tracker_manager_app.backend.utils.mapper;
 
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.Equipment;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.EquipmentType;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.StatusEquipment;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.NewEquipmentRequestDto;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.EquipmentDto;
+import com.dev.tiago.infra_tracker_manager_app.backend.repository.EquipmentTypeRepository;
 import com.dev.tiago.infra_tracker_manager_app.backend.repository.StatusEquipmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -15,6 +17,7 @@ import java.util.List;
 public class EquipmentMapper {
 
     private final StatusEquipmentRepository statusEquipmentRepository;
+    private final EquipmentTypeRepository equipmentTypeRepository;
 
     public EquipmentDto toDto(Equipment equipment){
         if (equipment == null) return null;
@@ -27,7 +30,8 @@ public class EquipmentMapper {
                 equipment.getSn(),
                 equipment.isActive(),
                 equipment.getCreatedAt(),
-                equipment.getStatus().getId()
+                equipment.getStatus().getId(),
+                equipment.getEquipmentType().getId()
         );
     }
 
@@ -69,13 +73,17 @@ public class EquipmentMapper {
                 requestDto.sn(),
                 requestDto.isActive(),
                 requestDto.createdAt(),
-                requestDto.status_id()
+                requestDto.status_id(),
+                requestDto.equipment_category_id()
         );
     }
 
     public Equipment toEntity(NewEquipmentRequestDto requestDto){
         StatusEquipment status = statusEquipmentRepository.findById(requestDto.status_id())
                 .orElseThrow(() -> new IllegalArgumentException("Status not found."));
+
+        EquipmentType category = equipmentTypeRepository.findById(requestDto.equipment_category_id())
+                .orElseThrow(() -> new IllegalArgumentException("Category not found."));
 
         return new Equipment(
                 requestDto.id(),
@@ -85,7 +93,8 @@ public class EquipmentMapper {
                 requestDto.sn(),
                 requestDto.isActive(),
                 requestDto.createdAt(),
-                status
+                status,
+                category
         );
     }
 }

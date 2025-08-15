@@ -7,8 +7,12 @@ CREATE TABLE TB_EQUIPMENT (
     is_active BOOLEAN DEFAULT TRUE NOT NULL,
     created_at TIMESTAMP NOT NULL,
     status_id uuid,
+    equipment_category_id uuid,
 
     CONSTRAINT fk_status FOREIGN KEY(status_id)
-        REFERENCES TB_STATUS_EQUIPMENT(id)
+        REFERENCES TB_STATUS_EQUIPMENT(id),
 
+
+    CONSTRAINT fk_category FOREIGN KEY(equipment_category_id)
+        REFERENCES TB_EQUIPMENT_CATEGORY(id)
 );

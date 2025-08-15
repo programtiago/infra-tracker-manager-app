@@ -50,7 +50,12 @@ public class Equipment {
     @JoinColumn(name = "status_id")
     private StatusEquipment status;
 
-    public Equipment(String description, String brand, String model, String sn, boolean isActive, LocalDateTime createdAt, StatusEquipment status) {
+    @ManyToOne
+    @JoinColumn(name = "equipment_category_id")
+    private EquipmentType equipmentType;
+
+    public Equipment(String description, String brand, String model, String sn, boolean isActive,
+                     LocalDateTime createdAt, StatusEquipment status, EquipmentType equipmentType) {
         this.description = description;
         this.brand = brand;
         this.model = model;
@@ -58,5 +63,6 @@ public class Equipment {
         this.isActive = isActive;
         this.createdAt = createdAt;
         this.status = status;
+        this.equipmentType = equipmentType;
     }
 }
