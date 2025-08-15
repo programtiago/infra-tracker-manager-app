@@ -45,4 +45,13 @@ public class Equipment {
     @NotNull(message = "The field 'created_at' its mandatory.")
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
+
+    public Equipment(String description, String brand, String model, String sn, boolean isActive, LocalDateTime createdAt) {
+        this.description = description;
+        this.brand = brand;
+        this.model = model;
+        this.sn = sn;
+        this.isActive = isActive;
+        this.createdAt = createdAt;
+    }
 }

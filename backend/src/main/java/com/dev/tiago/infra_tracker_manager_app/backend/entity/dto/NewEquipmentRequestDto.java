@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Length;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public record EquipmentDto(
+public record NewEquipmentRequestDto(
         UUID id,
         @NotBlank(message = "The field 'description' its mandatory.")
         @Length(min = 10, max = 150, message = "The field 'description' must be between 10 and 150 characters")
@@ -24,6 +24,6 @@ public record EquipmentDto(
         @NotNull
         boolean isActive,
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        @NotNull(message = "The field 'createdAt' its mandatory.")
         LocalDateTime createdAt
+
 ) { }

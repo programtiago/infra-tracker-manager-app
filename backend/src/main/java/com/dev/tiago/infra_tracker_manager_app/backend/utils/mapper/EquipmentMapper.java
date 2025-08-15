@@ -1,6 +1,7 @@
 package com.dev.tiago.infra_tracker_manager_app.backend.utils.mapper;
 
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.Equipment;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.NewEquipmentRequestDto;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.EquipmentDto;
 import org.springframework.stereotype.Component;
 
@@ -50,5 +51,29 @@ public class EquipmentMapper {
         return equipmentsDto.stream()
                 .map(this::toEntity)
                 .toList();
+    }
+
+    public EquipmentDto toDto(NewEquipmentRequestDto requestDto){
+        return new EquipmentDto(
+                requestDto.id(),
+                requestDto.description(),
+                requestDto.brand(),
+                requestDto.model(),
+                requestDto.sn(),
+                requestDto.isActive(),
+                requestDto.createdAt()
+        );
+    }
+
+    public Equipment toEntity(NewEquipmentRequestDto requestDto){
+        return new Equipment(
+                requestDto.id(),
+                requestDto.description(),
+                requestDto.brand(),
+                requestDto.model(),
+                requestDto.sn(),
+                requestDto.isActive(),
+                requestDto.createdAt()
+        );
     }
 }
