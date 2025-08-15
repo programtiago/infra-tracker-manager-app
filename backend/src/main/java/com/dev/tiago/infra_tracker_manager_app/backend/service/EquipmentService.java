@@ -9,11 +9,14 @@ import com.dev.tiago.infra_tracker_manager_app.backend.repository.EquipmentRepos
 import com.dev.tiago.infra_tracker_manager_app.backend.repository.EquipmentTypeRepository;
 import com.dev.tiago.infra_tracker_manager_app.backend.repository.StatusEquipmentRepository;
 import com.dev.tiago.infra_tracker_manager_app.backend.utils.mapper.EquipmentMapper;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -30,6 +33,7 @@ public class EquipmentService {
     }
 
     public EquipmentDto createNew(NewEquipmentRequestDto requestDto){
+
        StatusEquipment defaultStatus = statusEquipmentRepository.findByDescription("Available")
                .orElseThrow(() -> new IllegalArgumentException("Status 'Available' not found."));
 
@@ -53,5 +57,28 @@ public class EquipmentService {
        Equipment savedEquipment = equipmentRepository.save(equipment);
 
        return equipmentMapper.toDto(savedEquipment);
+    }
+
+    public EquipmentDto updateStatus(UUID equipmentId, UUID statusId){
+        Equipment equipment = equipmentRepository.findById(equipmentId)
+                .orElseThrow(() -> new IllegalArgumentException("Equipment not found."));
+
+        StatusEquipment status = statusEquipmentRepository.findById(statusId)
+                .orElseThrow(() -> new IllegalArgumentException("Status not found."));
+
+        if (equipment.getStatus().getId().equals(statusId)){
+            throw new RuntimeException("The equipment already got the status " + status.getDescription());
+        }else{
+            equipment.setStatus(status);
+
+            if (equipment.getStatus().getDescription().equals("Damanged") || equipment.getStatus().getDescription().equals("For Warranty") ||
+                equipment.getStatus().getDescription().equals("For Scrapping")){
+                equipment.setActive(false);
+            }
+
+            equipmentRepository.save(equipment);
+        }
+
+        return equipmentMapper.toDto(equipment);
     }
 }

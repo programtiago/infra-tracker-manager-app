@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/equipments")
@@ -24,5 +25,10 @@ public class EquipmentController {
     @PostMapping("/new")
     public EquipmentDto create(@RequestBody @Valid NewEquipmentRequestDto requestDto){
         return equipmentService.createNew(requestDto);
+    }
+
+    @PutMapping("/{equipmentId}/status/{statusId}")
+    public EquipmentDto updateStatus(@PathVariable UUID equipmentId, @PathVariable UUID statusId){
+        return equipmentService.updateStatus(equipmentId, statusId);
     }
 }

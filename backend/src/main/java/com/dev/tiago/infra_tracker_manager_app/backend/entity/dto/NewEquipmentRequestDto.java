@@ -17,7 +17,7 @@ public record NewEquipmentRequestDto(
         @Length(min = 4, max = 50, message = "The field 'brand' must be between 4 and 50 characters")
         String brand,
         @NotBlank(message = "The field 'model' its mandatory.")
-        @Length(min = 10, max = 50, message = "The field 'model' must be between 10 and 50 characters")
+        @Length(min = 5, max = 50, message = "The field 'model' must be between 10 and 50 characters")
         String model,
         @Length(min = 4, max = 30, message = "The field 'sn' must be between 4 and 30 characters")
         String sn,
