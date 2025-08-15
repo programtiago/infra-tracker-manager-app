@@ -5,6 +5,7 @@ import com.dev.tiago.infra_tracker_manager_app.backend.entity.EquipmentType;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.StatusEquipment;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.NewEquipmentRequestDto;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.EquipmentDto;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.UpdateEquipmentRequestDto;
 import com.dev.tiago.infra_tracker_manager_app.backend.repository.EquipmentRepository;
 import com.dev.tiago.infra_tracker_manager_app.backend.repository.EquipmentTypeRepository;
 import com.dev.tiago.infra_tracker_manager_app.backend.repository.StatusEquipmentRepository;
@@ -12,7 +13,6 @@ import com.dev.tiago.infra_tracker_manager_app.backend.utils.mapper.EquipmentMap
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -80,5 +80,23 @@ public class EquipmentService {
         }
 
         return equipmentMapper.toDto(equipment);
+    }
+
+    public EquipmentDto updateData(UUID equipmentId, UpdateEquipmentRequestDto requestDto){
+        Equipment equipment = equipmentRepository.findById(equipmentId)
+                .orElseThrow(() -> new EntityNotFoundException("Equipament not found"));
+
+        EquipmentType category = equipmentTypeRepository.findById(requestDto.equipment_category_id())
+                        .orElseThrow(() -> new EntityNotFoundException("Category not found"));
+
+        equipment.setDescription(requestDto.description());
+        equipment.setSn(requestDto.sn());
+        equipment.setBrand(requestDto.brand());
+        equipment.setModel(requestDto.model());
+        equipment.setEquipmentType(category);
+
+        Equipment updated = equipmentRepository.save(equipment);
+
+        return equipmentMapper.toDto(updated);
     }
 }
