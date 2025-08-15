@@ -8,6 +8,7 @@ CREATE TABLE TB_EQUIPMENT (
     created_at TIMESTAMP NOT NULL,
     status_id uuid,
     equipment_category_id uuid,
+    updated_at TIMESTAMP,
 
     CONSTRAINT fk_status FOREIGN KEY(status_id)
         REFERENCES TB_STATUS_EQUIPMENT(id),

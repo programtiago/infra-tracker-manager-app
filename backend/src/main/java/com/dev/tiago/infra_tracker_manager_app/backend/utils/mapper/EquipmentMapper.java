@@ -41,7 +41,8 @@ public class EquipmentMapper {
                 equipment.isActive(),
                 equipment.getCreatedAt(),
                 statusId,
-                categoryId
+                categoryId,
+                equipment.getUpdatedAt()
         );
     }
 
@@ -84,7 +85,8 @@ public class EquipmentMapper {
                 requestDto.isActive(),
                 requestDto.createdAt(),
                 requestDto.status_id(),
-                requestDto.equipment_category_id()
+                requestDto.equipment_category_id(),
+                requestDto.updatedAt()
         );
     }
 
@@ -104,7 +106,8 @@ public class EquipmentMapper {
                 requestDto.isActive(),
                 requestDto.createdAt(),
                 status,
-                category
+                category,
+                requestDto.updatedAt()
         );
     }
 }

@@ -27,5 +27,6 @@ public record EquipmentDto(
         @NotNull(message = "The field 'createdAt' its mandatory.")
         LocalDateTime createdAt,
         UUID status_id,
-        UUID equipment_category_id
+        UUID equipment_category_id,
+        LocalDateTime updatedAt
 ) { }

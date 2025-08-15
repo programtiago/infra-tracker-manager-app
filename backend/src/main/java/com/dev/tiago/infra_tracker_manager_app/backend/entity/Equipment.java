@@ -54,6 +54,10 @@ public class Equipment {
     @JoinColumn(name = "equipment_category_id")
     private EquipmentType equipmentType;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
+
     public Equipment(String description, String brand, String model, String sn, boolean isActive,
                      LocalDateTime createdAt, StatusEquipment status, EquipmentType equipmentType) {
         this.description = description;

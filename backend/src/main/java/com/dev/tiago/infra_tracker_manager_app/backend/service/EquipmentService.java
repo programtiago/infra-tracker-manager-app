@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Component
@@ -74,6 +75,7 @@ public class EquipmentService {
             if (equipment.getStatus().getDescription().equals("Damanged") || equipment.getStatus().getDescription().equals("For Warranty") ||
                 equipment.getStatus().getDescription().equals("For Scrapping")){
                 equipment.setActive(false);
+                equipment.setUpdatedAt(LocalDateTime.now());
             }
 
             equipmentRepository.save(equipment);
@@ -94,9 +96,16 @@ public class EquipmentService {
         equipment.setBrand(requestDto.brand());
         equipment.setModel(requestDto.model());
         equipment.setEquipmentType(category);
+        equipment.setUpdatedAt(LocalDateTime.now());
 
         Equipment updated = equipmentRepository.save(equipment);
 
         return equipmentMapper.toDto(updated);
+    }
+
+    public EquipmentDto findById(UUID id){
+        Optional<Equipment> optEq = equipmentRepository.findById(id);
+
+        return optEq.map(equipmentMapper::toDto).orElse(null);
     }
 }

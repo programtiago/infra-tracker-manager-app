@@ -1,10 +1,8 @@
 package com.dev.tiago.infra_tracker_manager_app.backend.entity.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 public record UpdateEquipmentRequestDto(

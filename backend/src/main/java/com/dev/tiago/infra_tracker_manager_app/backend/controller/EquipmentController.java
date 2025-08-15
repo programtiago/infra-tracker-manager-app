@@ -37,4 +37,9 @@ public class EquipmentController {
     public EquipmentDto updateData(@PathVariable UUID id, @RequestBody UpdateEquipmentRequestDto requestDto){
         return equipmentService.updateData(id, requestDto);
     }
+
+    @GetMapping("/{id}")
+    public EquipmentDto findById(@PathVariable UUID id){
+        return equipmentService.findById(id);
+    }
 }
