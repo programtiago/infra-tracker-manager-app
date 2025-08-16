@@ -1,5 +1,6 @@
 package com.dev.tiago.infra_tracker_manager_app.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -32,5 +33,6 @@ public class EmployeeBuilding {
 
     @Column(name = "assigned_at", nullable = false)
     @NotNull(message = "The field 'assigned_At' is mandatory.")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime assignedAt;
 }

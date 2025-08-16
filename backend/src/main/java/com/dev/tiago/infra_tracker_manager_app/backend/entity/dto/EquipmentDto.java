@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 public record EquipmentDto(
@@ -28,5 +29,8 @@ public record EquipmentDto(
         LocalDateTime createdAt,
         UUID status_id,
         UUID equipment_category_id,
-        LocalDateTime updatedAt
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        LocalDateTime updatedAt,
+        List<EquipmentBuildingDto> equipmentBuildings,
+        List<EquipmentLocationDto> equipmentLocations
 ) { }

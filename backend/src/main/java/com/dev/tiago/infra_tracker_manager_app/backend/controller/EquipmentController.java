@@ -42,4 +42,6 @@ public class EquipmentController {
     public EquipmentDto findById(@PathVariable UUID id){
         return equipmentService.findById(id);
     }
+
+
 }

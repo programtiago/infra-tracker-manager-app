@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.List;
 import java.util.UUID;
 
 public record BuildingDto(
@@ -15,6 +16,8 @@ public record BuildingDto(
         @Length(min = 10, max = 200, message = "The field 'description' must be between 10 and 50 characters")
         String address,
         @NotNull(message = "The field 'is_active' is mandatory.")
-        boolean isActive
+        boolean isActive,
+        List<LocationDto> locations,
+        List<OperationBuildingDto> operationsBuilding
 ) {
 }

@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public record OperationBuildingDto(
+public record EquipmentLocationDto(
         UUID id,
-        UUID operationId,
-        UUID buildingId,
+        UUID equipmentId,
+        UUID locationId,
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         LocalDateTime assignedAt
 ) {

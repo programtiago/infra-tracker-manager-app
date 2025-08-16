@@ -25,7 +25,7 @@ public class EquipmentBuilding {
     private UUID id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "equiment_id")
+    @JoinColumn(name = "equipment_id")
     private Equipment equipment;
 
     @ManyToOne(optional = false)

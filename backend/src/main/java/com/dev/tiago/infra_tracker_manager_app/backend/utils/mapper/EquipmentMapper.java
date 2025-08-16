@@ -3,6 +3,8 @@ package com.dev.tiago.infra_tracker_manager_app.backend.utils.mapper;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.Equipment;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.EquipmentType;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.StatusEquipment;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.EquipmentBuildingDto;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.EquipmentLocationDto;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.NewEquipmentRequestDto;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.EquipmentDto;
 import com.dev.tiago.infra_tracker_manager_app.backend.repository.EquipmentTypeRepository;
@@ -21,6 +23,9 @@ public class EquipmentMapper {
     private final StatusEquipmentRepository statusEquipmentRepository;
     private final EquipmentTypeRepository equipmentTypeRepository;
 
+    private final EquipmentBuildingMapper equipmentBuildingMapper;
+    private final EquipmentLocationMapper equipmentLocationMapper;
+
     public EquipmentDto toDto(Equipment equipment){
         if (equipment == null) return null;
 
@@ -32,6 +37,10 @@ public class EquipmentMapper {
                 .map(EquipmentType::getId)
                 .orElse(null);
 
+        List<EquipmentBuildingDto> buildingDtos = equipmentBuildingMapper.toListDto(equipment.getEquipmentBuildings());
+
+        List<EquipmentLocationDto> equipmentLocationDtos = equipmentLocationMapper.toListDto(equipment.getEquipmentLocations());
+
         return new EquipmentDto(
                 equipment.getId(),
                 equipment.getDescription(),
@@ -42,7 +51,9 @@ public class EquipmentMapper {
                 equipment.getCreatedAt(),
                 statusId,
                 categoryId,
-                equipment.getUpdatedAt()
+                equipment.getUpdatedAt(),
+                buildingDtos,
+                equipmentLocationDtos
         );
     }
 
@@ -86,7 +97,9 @@ public class EquipmentMapper {
                 requestDto.createdAt(),
                 requestDto.status_id(),
                 requestDto.equipment_category_id(),
-                requestDto.updatedAt()
+                requestDto.updatedAt(),
+                null,
+                null
         );
     }
 

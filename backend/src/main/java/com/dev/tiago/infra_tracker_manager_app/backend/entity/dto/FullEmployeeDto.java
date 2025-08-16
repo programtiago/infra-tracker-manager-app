@@ -1,5 +1,6 @@
 package com.dev.tiago.infra_tracker_manager_app.backend.entity.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -35,6 +36,7 @@ public record FullEmployeeDto(
         @NotBlank(message = "The field 'function' its mandatory.")
         @Length(min = 5, max = 20, message = "The field 'function' must be between 5 and 20 characters")
         String function, @NotNull(message = "The field 'function' its mandatory.")
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         LocalDateTime createdAt,
         FullBuildingDto building,
         List<EmployeeBuildingDto> employeeBuildings,
