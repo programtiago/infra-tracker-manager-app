@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -57,6 +59,12 @@ public class Equipment {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "equipment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EquipmentBuilding> equipmentBuildings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "equipment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EquipmentLocation> equipmentLocations = new ArrayList<>();
 
     public Equipment(String description, String brand, String model, String sn, boolean isActive,
                      LocalDateTime createdAt, StatusEquipment status, EquipmentType equipmentType) {

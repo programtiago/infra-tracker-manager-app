@@ -107,7 +107,9 @@ public class EquipmentMapper {
                 requestDto.createdAt(),
                 status,
                 category,
-                requestDto.updatedAt()
+                requestDto.updatedAt(),
+                null,
+                null
         );
     }
 }

@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -27,4 +29,7 @@ public class Operation {
     @NotNull(message = "The field 'is_active' is mandatory.")
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
+
+    @OneToMany(mappedBy = "operation", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OperationBuilding> operationBuildings = new ArrayList<>();
 }

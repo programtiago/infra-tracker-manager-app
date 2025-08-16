@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -43,12 +45,21 @@ public class Employee {
     private String birthdayDate;
     @Length(min = 10, max = 20, message = "The field 'phone_number' must be between 9 and 20 digits")
     private String phoneNumber;
-    @NotBlank(message = "The field 'operation' its mandatory.")
-    private String operation;
     @NotBlank(message = "The field 'function' its mandatory.")
+    @Length(min = 5, max = 20, message = "The field 'function' must be between 5 and 20 characters")
     private String function;
     @NotNull(message = "The field 'function' its mandatory.")
     private LocalDateTime createdAt;
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @ManyToOne(optional = false)
+    private Building building;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EmployeeBuilding> employeeBuildings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private List<LocationEmployee> locationEmployees;
+
 }
