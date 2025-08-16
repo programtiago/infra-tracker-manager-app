@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -29,6 +30,6 @@ public class LocationEmployee {
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
 
-    @Column(name = "assigned_date", nullable = false)
-    private LocalDate assignedDate;
+    @Column(name = "assigned_at", nullable = false)
+    private LocalDateTime assignedAt;
 }

@@ -7,19 +7,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "employee_building", uniqueConstraints = {
+@Table(name = "TB_EMPLOYEE_BUILDING", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"employee_id", "building_id"})
 })
 public class EmployeeBuilding {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "employee_id")

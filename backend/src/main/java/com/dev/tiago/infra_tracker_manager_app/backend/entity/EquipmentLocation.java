@@ -4,17 +4,18 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "equipment_location", uniqueConstraints = {
+@Table(name = "TB_EQUIPMENT_LOCATION", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"equipment_id", "location_id"})
 })
 public class EquipmentLocation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "equipment_id")

@@ -3,10 +3,14 @@ CREATE TABLE TB_EMPLOYEE (
     first_name VARCHAR(20) NOT NULL,
     last_name VARCHAR(20) NOT NULL,
     email VARCHAR(100),
-    worker_no VARCHAR(4) UNIQUE NOT NULL,
+    worker_no VARCHAR(5) UNIQUE NOT NULL,
     birthday_date VARCHAR(10) NOT NULL,
     phone_number VARCHAR(20) NOT NULL,
     function VARCHAR(50) NOT NULL,
     created_at TIMESTAMP NOT NULL,
-    updated_at TIMESTAMP
+    updated_at TIMESTAMP,
+    building_id uuid NOT NULL,
+
+    CONSTRAINT fk_building
+        FOREIGN KEY (building_id) REFERENCES TB_BUILDING(id)
 );

@@ -1,5 +1,6 @@
 package com.dev.tiago.infra_tracker_manager_app.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -49,8 +50,10 @@ public class Employee {
     @Length(min = 5, max = 20, message = "The field 'function' must be between 5 and 20 characters")
     private String function;
     @NotNull(message = "The field 'function' its mandatory.")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
     @Column(name = "updated_at")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updatedAt;
 
     @ManyToOne(optional = false)
