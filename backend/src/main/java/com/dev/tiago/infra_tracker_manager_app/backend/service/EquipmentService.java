@@ -41,6 +41,10 @@ public class EquipmentService {
         EquipmentType category = equipmentTypeRepository.findById(requestDto.equipment_category_id())
                 .orElseThrow(() -> new IllegalArgumentException("Category not found."));
 
+        boolean snExists = equipmentRepository.existsBySn(requestDto.sn());
+
+
+
        Equipment equipment = new Equipment(
                requestDto.description(),
                requestDto.brand(),

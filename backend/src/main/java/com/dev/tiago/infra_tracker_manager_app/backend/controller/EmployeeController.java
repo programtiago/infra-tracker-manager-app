@@ -1,6 +1,7 @@
 package com.dev.tiago.infra_tracker_manager_app.backend.controller;
 
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.Employee;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.EmployeeDto;
 import com.dev.tiago.infra_tracker_manager_app.backend.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetMapping
-    public List<Employee> findAll(){
+    public List<EmployeeDto> findAll(){
         return employeeService.findAll();
     }
 }
