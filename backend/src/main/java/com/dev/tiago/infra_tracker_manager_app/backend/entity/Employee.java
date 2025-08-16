@@ -1,13 +1,13 @@
 package com.dev.tiago.infra_tracker_manager_app.backend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -23,12 +23,32 @@ public class Employee {
     @GeneratedValue
     @NotNull
     private UUID id;
+    @NotBlank(message = "The field 'first_name' its mandatory.")
+    @Length(min = 3, max = 20, message = "The field 'first_name' must be between 3 and 20 characters")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
+    @NotBlank(message = "The field 'first_name' its mandatory.")
+    @Length(min = 3, max = 20, message = "The field 'last_name' must be between 3 and 20 characters")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
+    @Email
+    @Length(min = 20, max = 100, message = "The field 'email' must be between 20 and 100 characters")
     private String email;
+    @NotBlank(message = "The field 'worker_no' its mandatory.")
+    @Column(name = "worker_no", nullable = false)
+    private String workerNo;
+    @NotBlank(message = "The field 'birthday_date' its mandatory.")
+    @Length(min = 10, max = 10, message = "The field 'email' must have 10 characters")
+    @Column(name = "birthday_date", nullable = false)
     private String birthdayDate;
+    @Length(min = 10, max = 20, message = "The field 'phone_number' must be between 9 and 20 digits")
     private String phoneNumber;
+    @NotBlank(message = "The field 'operation' its mandatory.")
     private String operation;
+    @NotBlank(message = "The field 'function' its mandatory.")
     private String function;
+    @NotNull(message = "The field 'function' its mandatory.")
     private LocalDateTime createdAt;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 }

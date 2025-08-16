@@ -1,0 +1,6 @@
+CREATE TABLE TB_BUILDING (
+    id uuid PRIMARY KEY NOT NULL,
+    description VARCHAR(50) NOT NULL,
+    address VARCHAR(150),
+    is_active BOOLEAN DEFAULT TRUE
+);

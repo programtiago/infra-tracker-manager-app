@@ -58,6 +58,8 @@ public class Equipment {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
+    private Building building;
+
     public Equipment(String description, String brand, String model, String sn, boolean isActive,
                      LocalDateTime createdAt, StatusEquipment status, EquipmentType equipmentType) {
         this.description = description;
