@@ -21,7 +21,7 @@ public class Employee {
 
     @Id
     @GeneratedValue
-    @NotNull
+    @NotNull(message = "The field 'id' is mandatory.")
     private UUID id;
     @NotBlank(message = "The field 'first_name' its mandatory.")
     @Length(min = 3, max = 20, message = "The field 'first_name' must be between 3 and 20 characters")

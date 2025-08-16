@@ -1,0 +1,6 @@
+CREATE TABLE TB_LOCATION (
+    id uuid PRIMARY KEY NOT NULL,
+    name VARCHAR(30) NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP NOT NULL
+);

@@ -22,7 +22,7 @@ public class Equipment {
     @Id
     @GeneratedValue
     @Column(name = "id", nullable = false)
-    @NotNull
+    @NotNull(message = "The field 'id' is mandatory.")
     private UUID id;
     @NotBlank(message = "The field 'description' its mandatory.")
     @Length(min = 10, max = 150, message = "The field 'description' must be between 10 and 150 characters")
@@ -57,8 +57,6 @@ public class Equipment {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-
-    private Building building;
 
     public Equipment(String description, String brand, String model, String sn, boolean isActive,
                      LocalDateTime createdAt, StatusEquipment status, EquipmentType equipmentType) {

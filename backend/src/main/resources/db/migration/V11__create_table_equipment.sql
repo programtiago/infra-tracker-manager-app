@@ -3,7 +3,7 @@ CREATE TABLE TB_EQUIPMENT (
     description VARCHAR(150) NOT NULL,
     brand VARCHAR(50) NOT NULL,
     model VARCHAR(50) NOT NULL,
-    sn VARCHAR(30),
+    sn VARCHAR(30) UNIQUE,
     is_active BOOLEAN DEFAULT TRUE NOT NULL,
     created_at TIMESTAMP NOT NULL,
     status_id uuid,

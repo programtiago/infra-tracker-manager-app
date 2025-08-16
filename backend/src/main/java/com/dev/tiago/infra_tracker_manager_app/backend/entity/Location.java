@@ -8,29 +8,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "TB_BUILDING")
-public class Building {
+@Table(name = "TB_LOCATION")
+public class Location {
 
     @Id
-    @Column(name = "id", updatable = false, nullable = false)
     @GeneratedValue
     @NotNull(message = "The field 'id' is mandatory.")
     private UUID id;
     @NotBlank(message = "The field 'name' is mandatory.")
-    @Length(min = 10, max = 50, message = "The field 'name' must be between 10 and 50 characters")
-    @Column(name = "name", nullable = false)
+    @Length(min = 10, max = 50, message = "The field 'name' must be between 10 and 50 characters.")
     private String name;
-    @NotBlank(message = "The field 'address' is mandatory.")
-    @Length(min = 10, max = 200, message = "The field 'description' must be between 10 and 50 characters")
-    @Column(name = "address", nullable = false)
-    private String address;
     @NotNull(message = "The field 'is_active' is mandatory.")
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
+    @NotNull(message = "The field 'created_at' is mandatory.")
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
 }

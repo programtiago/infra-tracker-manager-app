@@ -1,6 +1,6 @@
 INSERT INTO TB_BUILDING(
     id,
-    description,
+    name,
     address,
     is_active
 )
