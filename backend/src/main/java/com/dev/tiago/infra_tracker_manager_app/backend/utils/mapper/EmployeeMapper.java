@@ -3,23 +3,21 @@ package com.dev.tiago.infra_tracker_manager_app.backend.utils.mapper;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.*;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.BuildingDto;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.EmployeeDto;
-import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.EquipmentDto;
-import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.NewEquipmentRequestDto;
-import com.dev.tiago.infra_tracker_manager_app.backend.repository.EquipmentTypeRepository;
-import com.dev.tiago.infra_tracker_manager_app.backend.repository.StatusEquipmentRepository;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.LocationDto;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.OperationBuildingDto;
+import com.dev.tiago.infra_tracker_manager_app.backend.repository.LocationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
 public class EmployeeMapper {
 
-    public final BuildingMapper buildingMapper;
-
+    private final BuildingMapper buildingMapper;
+    private final OperationBuildingMapper operationBuildingMapper;
+    private final LocationMapper locationMapper;
     public EmployeeDto toDto(Employee employee){
         if (employee == null) return null;
 
@@ -73,12 +71,17 @@ public class EmployeeMapper {
                 .toList();
     }
 
-    public static BuildingDto toDto(Building building) {
+    public BuildingDto toDto(Building building) {
+        List<OperationBuildingDto> operationBuildingDtos = operationBuildingMapper.toListDto(building.getOperationBuildings());
+        List<LocationDto> locationDtos = locationMapper.toListDto(building.getLocations());
+
         return new BuildingDto(
                 building.getId(),
                 building.getName(),
                 building.getAddress(),
-                building.isActive()
+                building.isActive(),
+                locationDtos,
+                operationBuildingDtos
         );
     }
 }

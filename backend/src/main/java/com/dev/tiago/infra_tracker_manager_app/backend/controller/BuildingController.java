@@ -1,6 +1,7 @@
 package com.dev.tiago.infra_tracker_manager_app.backend.controller;
 
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.Building;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.BuildingDto;
 import com.dev.tiago.infra_tracker_manager_app.backend.service.BuildingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class BuildingController {
     private final BuildingService buildingService;
 
     @GetMapping
-    public List<Building> findAll(){
+    public List<BuildingDto> findAll(){
         return buildingService.findAll();
     }
 }

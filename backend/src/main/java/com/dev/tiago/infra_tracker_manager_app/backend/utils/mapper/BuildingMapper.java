@@ -2,19 +2,33 @@ package com.dev.tiago.infra_tracker_manager_app.backend.utils.mapper;
 
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.Building;
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.BuildingDto;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.LocationDto;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.OperationBuildingDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
+@RequiredArgsConstructor
 public class BuildingMapper {
+
+    private final LocationMapper locationMapper;
+    private final OperationBuildingMapper operationBuildingMapper;
 
     public BuildingDto toDto(Building building){
         if (building == null) return null;
+
+        List<LocationDto> locationDtos = locationMapper.toListDto(building.getLocations());
+        List<OperationBuildingDto> operationBuildingDtos = operationBuildingMapper.toListDto(building.getOperationBuildings());
 
         return new BuildingDto(
                 building.getId(),
                 building.getName(),
                 building.getAddress(),
-                building.isActive()
+                building.isActive(),
+                locationDtos,
+                operationBuildingDtos
         );
     }
 
@@ -31,6 +45,12 @@ public class BuildingMapper {
 
         return building;
 
+    }
+
+    public List<BuildingDto> toListDto(List<Building> buildings){
+        return buildings.stream()
+                .map(this::toDto)
+                .toList();
     }
 
 

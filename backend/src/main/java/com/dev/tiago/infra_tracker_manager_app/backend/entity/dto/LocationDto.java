@@ -3,6 +3,7 @@ package com.dev.tiago.infra_tracker_manager_app.backend.entity.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 public record LocationDto (
@@ -11,5 +12,7 @@ public record LocationDto (
         boolean isActive,
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         LocalDateTime createdAt,
-        UUID buildingId
+        UUID buildingId,
+        List<LocationEmployeeDto> locationEmployees,
+        List<EquipmentLocationDto> locationEquipments
 ){ }
