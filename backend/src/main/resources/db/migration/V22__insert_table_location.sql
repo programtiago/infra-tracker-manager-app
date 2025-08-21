@@ -18,4 +18,7 @@ VALUES
 ('bd526ee9-b37e-4da8-9c65-05be5afdfde5', 'Packaging 1.2', true, CURRENT_TIMESTAMP, '077f5047-593d-4cd3-89af-ce0cda21df4e'),
 ('0dcb0768-98d8-473b-a7e2-35923ccd998c', 'Packaging 1.3', true, CURRENT_TIMESTAMP, '077f5047-593d-4cd3-89af-ce0cda21df4e'),
 ('3aca46e4-474c-48e1-b786-ddce4db3d2ce', 'Packaging 1.4', true, CURRENT_TIMESTAMP, '077f5047-593d-4cd3-89af-ce0cda21df4e'),
-('7914d860-8e27-48d8-9009-c73b847e69e6', 'Packaging 1.5', true, CURRENT_TIMESTAMP, '077f5047-593d-4cd3-89af-ce0cda21df4e');
+('7914d860-8e27-48d8-9009-c73b847e69e6', 'Packaging 1.5', true, CURRENT_TIMESTAMP, '077f5047-593d-4cd3-89af-ce0cda21df4e'),
+('ba7a1931-2d4a-4bd7-99c7-92840a1f33b6', 'Warehouse Expedition', true, CURRENT_TIMESTAMP, '077f5047-593d-4cd3-89af-ce0cda21df4e'),
+('be89d8ef-f4c3-4ff9-8bd5-a30a06fd2623', 'Warehouse Reception', true, CURRENT_TIMESTAMP, '077f5047-593d-4cd3-89af-ce0cda21df4e'),
+('b9729da4-e0c4-4798-819d-9a39e061eb5c', 'Warehouse Supply', true, CURRENT_TIMESTAMP, '077f5047-593d-4cd3-89af-ce0cda21df4e');
