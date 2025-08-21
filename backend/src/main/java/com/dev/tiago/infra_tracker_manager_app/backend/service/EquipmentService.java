@@ -43,7 +43,9 @@ public class EquipmentService {
 
         boolean snExists = equipmentRepository.existsBySn(requestDto.sn());
 
-
+        if (snExists){
+            throw new IllegalArgumentException("Serial Number " + requestDto.sn() + " cannot be duplicated.");
+        }
 
        Equipment equipment = new Equipment(
                requestDto.description(),
