@@ -48,6 +48,11 @@ public class LocationEmployeeService {
                     "doesn't have a building assigned.");
         }
 
+        if (!employee.getBuilding().equals(location.getBuilding())){
+            throw new IllegalArgumentException("The employee " + employee.getFirstName() + " " + employee.getLastName() + " " +
+                    " has a different source Building.");
+        }
+
         LocationEmployee locationEmployee = new LocationEmployee();
         locationEmployee.setEmployee(employee);
         locationEmployee.setLocation(location);
