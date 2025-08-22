@@ -18,4 +18,8 @@ public class LocationService {
     public List<LocationDto> findAll(){
         return locationMapper.toListDto(locationRepository.findAll());
     }
+
+    public List<LocationDto> findAllActive(){
+        return locationMapper.toListDto(locationRepository.findAllByIsAvailableTrue());
+    }
 }

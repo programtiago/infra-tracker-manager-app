@@ -20,4 +20,9 @@ public class LocationController {
     public List<LocationDto> findAll(){
         return locationService.findAll();
     }
+
+    @GetMapping("/active")
+    public List<LocationDto> findAllActive(){
+        return locationService.findAllActive();
+    }
 }

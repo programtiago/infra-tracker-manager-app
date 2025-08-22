@@ -7,6 +7,7 @@ import com.dev.tiago.infra_tracker_manager_app.backend.repository.LocationEmploy
 import com.dev.tiago.infra_tracker_manager_app.backend.repository.LocationRepository;
 import com.dev.tiago.infra_tracker_manager_app.backend.utils.mapper.*;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +28,7 @@ public class LocationEmployeeService {
         return locationEmployeeMapper.toListDto(locationEmployeeRepository.findAll());
     }
 
+    @Transactional
     public LocationEmployeeDto assignEmployeeToLocation(UUID employeeId, UUID locationId) {
         Employee employee = employeeRepository.findById(employeeId)
                 .orElseThrow(() -> new EntityNotFoundException("Employee not found."));
@@ -50,7 +52,7 @@ public class LocationEmployeeService {
 
         if (!employee.getBuilding().equals(location.getBuilding())){
             throw new IllegalArgumentException("The employee " + employee.getFirstName() + " " + employee.getLastName() + " " +
-                    " has a different source Building.");
+                    " has a different source Building : " + employee.getBuilding().getName());
         }
 
         LocationEmployee locationEmployee = new LocationEmployee();
