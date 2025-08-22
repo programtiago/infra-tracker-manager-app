@@ -63,6 +63,6 @@ public class Employee {
     private List<EmployeeBuilding> employeeBuildings = new ArrayList<>();
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private List<LocationEmployee> locationEmployees;
+    private List<LocationEmployee> locationEmployees = new ArrayList<>();
 
 }

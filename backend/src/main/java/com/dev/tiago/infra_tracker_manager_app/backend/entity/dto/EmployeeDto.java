@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 public record EmployeeDto (
@@ -35,5 +36,6 @@ public record EmployeeDto (
         @Length(min = 5, max = 20, message = "The field 'function' must be between 5 and 20 characters")
         String function, @NotNull(message = "The field 'function' its mandatory.")
         LocalDateTime createdAt,
-        BuildingDto building
+        BuildingDto building,
+        List<LocationEmployeeDto> locationEmployees
 ) { }

@@ -15,10 +15,12 @@ public class EmployeeMapper {
     private final BuildingMapper buildingMapper;
     private final OperationBuildingMapper operationBuildingMapper;
     private final LocationMapper locationMapper;
+    private final LocationEmployeeMapper locationEmployeeMapper;
     public EmployeeDto toDto(Employee employee){
         if (employee == null) return null;
 
         BuildingDto buildingDto = buildingMapper.toDto(employee.getBuilding());
+        List<LocationEmployeeDto> locationEmployeesDto = locationEmployeeMapper.toListDto(employee.getLocationEmployees());
 
         return new EmployeeDto(
                 employee.getId(),
@@ -30,8 +32,8 @@ public class EmployeeMapper {
                 employee.getPhoneNumber(),
                 employee.getFunction(),
                 employee.getCreatedAt(),
-                buildingDto
-
+                buildingDto,
+                locationEmployeesDto
         );
     }
 
