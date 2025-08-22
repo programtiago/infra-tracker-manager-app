@@ -1,0 +1,18 @@
+.toolbar {
+    background-color: black;
+    height: 8dvh;
+    display: flex;
+    align-items: center;
+}
+
+.toolbar-title {
+    color: white;
+    font-size: larger;
+    font-weight: 700;
+    padding-left: 0.5em;
+}
+
+.menu-icon {
+    transform: scale(1.4);
+    color: white;
+}
