@@ -33,6 +33,10 @@ public class Location {
     @ManyToOne(optional = false)
     private Building building;
 
+    @NotNull(message = "The field 'isAvailable' is mandatory.")
+    @Column(name = "is_available")
+    private boolean isAvailable;
+
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
     private List<LocationEmployee> employeeAssignments;
 

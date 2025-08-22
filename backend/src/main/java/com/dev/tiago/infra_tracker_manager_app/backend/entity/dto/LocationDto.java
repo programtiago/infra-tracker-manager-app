@@ -12,6 +12,7 @@ public record LocationDto (
         boolean isActive,
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         LocalDateTime createdAt,
+        boolean isAvailable,
         UUID buildingId,
         List<LocationEmployeeDto> locationEmployees,
         List<EquipmentLocationDto> locationEquipments

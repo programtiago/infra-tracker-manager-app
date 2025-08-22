@@ -21,4 +21,9 @@ VALUES
 ('ad5134a4-9b29-40d3-9871-e1b434affd31', 'Ricardo', 'Almeida', 'ricardo.almeida@example.pt', '85306', '1983-06-17', '+351918901234', 'Housing', CURRENT_TIMESTAMP, null, '1af28204-5295-46bd-bafa-3252ee91d37a'),
 ('c5f4d926-607b-42ff-a7d8-91d60b862f1d', 'Inês', 'Gonçalves', 'ines.goncalves@example.pt', '85307', '1995-10-05', '+351919012345', 'Packaging', CURRENT_TIMESTAMP, null, '1af28204-5295-46bd-bafa-3252ee91d37a'),
 ('703803e6-941b-4173-9bf1-9fae4fd718ab', 'Bruno', 'Sousa', 'bruno.sousa@example.pt', '85308', '1989-12-19', '+351910123456', 'Housing', CURRENT_TIMESTAMP, null, '7d6d7829-c0e7-414b-94b9-462b12cc7a98'),
-('337585f6-6938-4f8f-9f44-7d3aa3f67b3b', 'Carla', 'Moura', 'carla.moura@example.pt', '85309', '1993-08-08', '+351911234567', 'Testing', CURRENT_TIMESTAMP, null, '077f5047-593d-4cd3-89af-ce0cda21df4e');
+('337585f6-6938-4f8f-9f44-7d3aa3f67b3b', 'Carla', 'Moura', 'carla.moura@example.pt', '85309', '1993-08-08', '+351911234567', 'Testing', CURRENT_TIMESTAMP, null, '077f5047-593d-4cd3-89af-ce0cda21df4e'),
+
+('3394a13c-70ce-4866-a392-1efeca46d5b6', 'Maria', 'Ferreira', 'maria.ferreira@example.com', '85310', '1990-09-25', '+351913456789', 'Packaging', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '1af28204-5295-46bd-bafa-3252ee91d37a'),
+('00918dea-aeb6-480a-9ddf-0fb0f47334ca', 'Carlos', 'Santos', 'carlos.santos@example.com', '85311', '1982-01-18', '+351914567890', 'Testing', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '1af28204-5295-46bd-bafa-3252ee91d37a'),
+('5a441152-fd5a-4753-a475-a169f36b6491', 'Ana', 'Costa', 'ana.costa@example.com', '85312', '1995-07-03', '+351915678901', 'Intern Production', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '1af28204-5295-46bd-bafa-3252ee91d37a'),
+('9ee03ff8-0b2a-43e2-ab1f-d7869a31a0b1', 'Ricardo', 'Mendes', 'ricardo.mendes@example.com', '85313', '1988-11-30', '+351916789012', 'Housing', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '1af28204-5295-46bd-bafa-3252ee91d37a');

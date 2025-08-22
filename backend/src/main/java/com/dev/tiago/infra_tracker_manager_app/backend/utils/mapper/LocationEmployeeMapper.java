@@ -39,10 +39,4 @@ public class LocationEmployeeMapper {
                 .map(this::toDto)
                 .toList();
     }
-
-    public List<LocationEmployee> toListEntity(List<LocationEmployeeDto> locationEmployeeDtos){
-        return locationEmployeeDtos.stream()
-                .map(this::toEntity)
-                .toList();
-    }
 }

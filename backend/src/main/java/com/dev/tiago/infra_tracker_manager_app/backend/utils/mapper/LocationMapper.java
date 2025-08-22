@@ -34,30 +34,28 @@ public class LocationMapper {
                 location.getName(),
                 location.isActive(),
                 location.getCreatedAt(),
+                location.isAvailable(),
                 location.getBuilding().getId(),
                 locationEmployeeDtos,
                 equipmentLocationDtos
         );
     }
 
-    public Location toEntity(LocationDto locationDto){
+    public Location toEntity(LocationDto locationDto,
+                             Building building,
+                             List<LocationEmployee> locationEmployees,
+                             List<EquipmentLocation> equipmentLocations){
         Location location = new Location();
 
         if (locationDto.id() != null){
             location.setId(locationDto.id());
         }
 
-        Building building = buildingRepository.findById(locationDto.buildingId())
-                .orElseThrow(() -> new IllegalArgumentException("Buildong not found."));
-
-        List<EquipmentLocation> equipmentLocations = equipmentLocationMapper.toEntityList(locationDto.locationEquipments());
-        List<LocationEmployee> locationEmployeess = locationEmployeeMapper.toListEntity(locationDto.locationEmployees());
-
         location.setBuilding(building);
         location.setEquipmentLocations(equipmentLocations);
         location.setName(locationDto.name());
         location.setActive(locationDto.isActive());
-        location.setEmployeeAssignments(locationEmployeess);
+        location.setEmployeeAssignments(locationEmployees);
         location.setCreatedAt(locationDto.createdAt());
 
         return location;
