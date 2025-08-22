@@ -23,6 +23,7 @@ public class EmployeeController {
         return employeeService.findAll();
     }
 
+
     @GetMapping("/{id}")
     public EmployeeDto getById(@PathVariable UUID id){
         return employeeService.findById(id);

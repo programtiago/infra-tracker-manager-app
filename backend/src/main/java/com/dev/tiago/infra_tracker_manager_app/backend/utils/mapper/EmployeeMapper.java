@@ -1,10 +1,7 @@
 package com.dev.tiago.infra_tracker_manager_app.backend.utils.mapper;
 
 import com.dev.tiago.infra_tracker_manager_app.backend.entity.*;
-import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.BuildingDto;
-import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.EmployeeDto;
-import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.LocationDto;
-import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.OperationBuildingDto;
+import com.dev.tiago.infra_tracker_manager_app.backend.entity.dto.*;
 import com.dev.tiago.infra_tracker_manager_app.backend.repository.LocationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -35,6 +32,28 @@ public class EmployeeMapper {
                 employee.getCreatedAt(),
                 buildingDto
 
+        );
+    }
+
+    public FullEmployeeDto toFullDto(Employee employee,
+                                     FullBuildingDto fullBuildingDto,
+                                     List<EmployeeBuildingDto> employeeBuildingDtos,
+                                     List<LocationEmployeeDto> locationEmployeeDtos){
+        if (employee == null) return null;
+
+        return new FullEmployeeDto(
+                employee.getId(),
+                employee.getFirstName(),
+                employee.getLastName(),
+                employee.getEmail(),
+                employee.getWorkerNo(),
+                employee.getBirthdayDate(),
+                employee.getPhoneNumber(),
+                employee.getFunction(),
+                employee.getCreatedAt(),
+                fullBuildingDto,
+                employeeBuildingDtos,
+                locationEmployeeDtos
         );
     }
 
