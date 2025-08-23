@@ -1,45 +1,47 @@
 <div class="equipments-table-container">
-    <mat-card>
+    <mat-card class="equipments-table-card">
         <mat-card-content>
-            <table mat-table [dataSource]="equipments" class="mat-elevation-z8">
-                <ng-container matColumnDef="description">
-                    <th mat-header-cell *matHeaderCellDef> Description </th>
-                    <td mat-cell *matCellDef="let equipment"> {{ equipment.description }} </td>
-                </ng-container>
+            <div class="table-scroll-container">
+                <table mat-table [dataSource]="equipments" class="mat-elevation-z8">
+                    <ng-container matColumnDef="description">
+                        <th mat-header-cell *matHeaderCellDef> Description </th>
+                        <td mat-cell *matCellDef="let equipment"> {{ equipment.description }} </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="brand">
-                    <th mat-header-cell *matHeaderCellDef> Brand </th>
-                    <td mat-cell *matCellDef="let equipment"> {{ equipment.brand }} </td>
-                </ng-container>
+                    <ng-container matColumnDef="brand">
+                        <th mat-header-cell *matHeaderCellDef> Brand </th>
+                        <td mat-cell *matCellDef="let equipment"> {{ equipment.brand }} </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="model">
-                    <th mat-header-cell *matHeaderCellDef> Model </th>
-                    <td mat-cell *matCellDef="let equipment"> {{ equipment.model }} </td>
-                </ng-container>
+                    <ng-container matColumnDef="model">
+                        <th mat-header-cell *matHeaderCellDef> Model </th>
+                        <td mat-cell *matCellDef="let equipment"> {{ equipment.model }} </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="sn">
-                    <th mat-header-cell *matHeaderCellDef> S/N </th>
-                    <td mat-cell *matCellDef="let equipment"> {{equipment.sn}} </td>
-                </ng-container>
+                    <ng-container matColumnDef="sn">
+                        <th mat-header-cell *matHeaderCellDef> S/N </th>
+                        <td mat-cell *matCellDef="let equipment"> {{equipment.sn}} </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="isActive">
-                    <th mat-header-cell *matHeaderCellDef> Active </th>
-                    <td mat-cell *matCellDef="let equipment"> {{ equipment.isActive }} </td>
-                </ng-container>
+                    <ng-container matColumnDef="isActive">
+                        <th mat-header-cell *matHeaderCellDef> Active </th>
+                        <td mat-cell *matCellDef="let equipment"> {{ equipment.isActive }} </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="createdAt">
-                    <th mat-header-cell *matHeaderCellDef> Created At </th>
-                    <td mat-cell *matCellDef="let equipment"> {{ equipment.createdAt }} </td>
-                </ng-container>
+                    <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef> Created At </th>
+                        <td mat-cell *matCellDef="let equipment"> {{ equipment.createdAt }} </td>
+                    </ng-container>
 
-                <ng-container matColumnDef="statusEquipment">
-                    <th mat-header-cell *matHeaderCellDef> Status </th>
-                    <td mat-cell *matCellDef="let equipment"> {{ equipment.statusEquipment }} </td>
-                </ng-container>
+                    <ng-container matColumnDef="statusEquipment">
+                        <th mat-header-cell *matHeaderCellDef> Status </th>
+                        <td mat-cell *matCellDef="let equipment"> {{ equipment.statusEquipment }} </td>
+                    </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row  *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
         </mat-card-content>
     </mat-card>
 </div>

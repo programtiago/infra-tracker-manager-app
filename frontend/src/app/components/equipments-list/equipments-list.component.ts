@@ -28,6 +28,114 @@ export class EquipmentsListComponent {
       isActive: false,
       createdAt: "2024-12-15T09:30:00",
       statusEquipment: "In Warranty"
+    },
+    {
+      description: "Dell Monitor",
+      brand: "Dell",
+      model: "P2419H",
+      sn: "SN654321",
+      isActive: false,
+      createdAt: "2024-12-15T09:30:00",
+      statusEquipment: "In Warranty"
+    },
+    {
+      description: "Dell Monitor",
+      brand: "Dell",
+      model: "P2419H",
+      sn: "SN654321",
+      isActive: false,
+      createdAt: "2024-12-15T09:30:00",
+      statusEquipment: "In Warranty"
+    },
+    {
+      description: "Dell Monitor",
+      brand: "Dell",
+      model: "P2419H",
+      sn: "SN654321",
+      isActive: false,
+      createdAt: "2024-12-15T09:30:00",
+      statusEquipment: "In Warranty"
+    },
+    {
+      description: "Dell Monitor",
+      brand: "Dell",
+      model: "P2419H",
+      sn: "SN654321",
+      isActive: false,
+      createdAt: "2024-12-15T09:30:00",
+      statusEquipment: "In Warranty"
+    },
+    {
+      description: "Dell Monitor",
+      brand: "Dell",
+      model: "P2419H",
+      sn: "SN654321",
+      isActive: false,
+      createdAt: "2024-12-15T09:30:00",
+      statusEquipment: "In Warranty"
+    },
+    {
+      description: "Dell Monitor",
+      brand: "Dell",
+      model: "P2419H",
+      sn: "SN654321",
+      isActive: false,
+      createdAt: "2024-12-15T09:30:00",
+      statusEquipment: "In Warranty"
+    },
+    {
+      description: "Dell Monitor",
+      brand: "Dell",
+      model: "P2419H",
+      sn: "SN654321",
+      isActive: false,
+      createdAt: "2024-12-15T09:30:00",
+      statusEquipment: "In Warranty"
+    },
+    {
+      description: "Dell Monitor",
+      brand: "Dell",
+      model: "P2419H",
+      sn: "SN654321",
+      isActive: false,
+      createdAt: "2024-12-15T09:30:00",
+      statusEquipment: "In Warranty"
+    },
+    {
+      description: "Dell Monitor",
+      brand: "Dell",
+      model: "P2419H",
+      sn: "SN654321",
+      isActive: false,
+      createdAt: "2024-12-15T09:30:00",
+      statusEquipment: "In Warranty"
+    },
+    {
+      description: "Dell Monitor",
+      brand: "Dell",
+      model: "P2419H",
+      sn: "SN654321",
+      isActive: false,
+      createdAt: "2024-12-15T09:30:00",
+      statusEquipment: "In Warranty"
+    },
+    {
+      description: "Dell Monitor",
+      brand: "Dell",
+      model: "P2419H",
+      sn: "SN654321",
+      isActive: false,
+      createdAt: "2024-12-15T09:30:00",
+      statusEquipment: "In Warranty"
+    },
+    {
+      description: "Dell Monitor",
+      brand: "Dell",
+      model: "P2419H",
+      sn: "SN654321",
+      isActive: false,
+      createdAt: "2024-12-15T09:30:00",
+      statusEquipment: "In Warranty"
     }
   ]
 }
