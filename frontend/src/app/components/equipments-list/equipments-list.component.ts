@@ -9,14 +9,34 @@ import { EquipmentService } from '../../services/equipment.service';
 })
 export class EquipmentsListComponent {
 
-  displayedColumns = ['description', 'brand', 'model', 'sn', 'isActive', 'createdAt', 'statusEquipment']
+  displayedColumns = ['description', 'brand', 'model', 'sn', 'createdAt', 'statusEquipment']
+
+  statusDescriptions: { [key: string]: string } = {}
+  statusDescription: string = 'Loading...';
 
   equipments: Equipment[] = []
 
   constructor(private equipmentService: EquipmentService){
     this.equipmentService.getAll().subscribe((res) => {
       this.equipments = res;
-      console.log(res)
     })
+  }
+
+  getStatusDescription(id: string): string{
+    if (this.statusDescriptions[id]){
+      return this.statusDescriptions[id];
+    }
+
+    this.statusDescriptions[id] = 'Loading...';
+
+    this.equipmentService.getStatusDescription(id).subscribe((res) => {
+      this.statusDescriptions[id] = res.description;
+      },
+      (error) => {
+        this.statusDescriptions[id] = 'Uknown';
+      }
+    );
+
+    return this.statusDescriptions[id];
   }
 }

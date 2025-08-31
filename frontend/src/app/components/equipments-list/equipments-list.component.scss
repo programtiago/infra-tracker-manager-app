@@ -51,20 +51,10 @@
                 tr.highlighted {
                     background-color: #616161 !important;
                 }
-            }
-        }
 
-        .info-icon-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 0.8em;            
-
-            span {
-                font-size: 0.9em;
-                font-weight: bold;
-                padding-top: 0.2em;
+                .info-icon:hover {
+                    color: white;
+                }
             }
         }
     }
