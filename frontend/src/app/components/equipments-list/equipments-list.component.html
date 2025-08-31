@@ -36,8 +36,12 @@
                     <ng-container matColumnDef="statusEquipment">
                         <th mat-header-cell *matHeaderCellDef> Status </th>
                         <td mat-cell *matCellDef="let equipment">
-                            <div *ngIf="equipment.isActive === true">
-                                <p style="color: green; font-weight: bold;">ACTIVE</p>
+                            <div class="info-icon-container">
+                                <mat-icon class="info-icon">info</mat-icon>
+                                <span 
+                                    [style.color]="equipment.isActive ? 'green' : 'red'">
+                                    {{ equipment.isActive ? 'ACTIVE' : 'INACTIVE'}}
+                                </span>
                             </div>
                         </td>
                     </ng-container>

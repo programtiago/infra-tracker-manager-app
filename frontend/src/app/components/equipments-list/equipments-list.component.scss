@@ -9,6 +9,7 @@
 
     .equipments-table-card {
         background-color: #2e2e2e !important; 
+        height: 100%;
 
         mat-card-content {
             height: 100%;
@@ -50,6 +51,20 @@
                 tr.highlighted {
                     background-color: #616161 !important;
                 }
+            }
+        }
+
+        .info-icon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.8em;            
+
+            span {
+                font-size: 0.9em;
+                font-weight: bold;
+                padding-top: 0.2em;
             }
         }
     }
