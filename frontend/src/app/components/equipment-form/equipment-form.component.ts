@@ -4,6 +4,8 @@ import { EquipmentType } from '../../model/equipmentType.';
 import { EquipmentService } from '../../services/equipment.service';
 import { NewEquipmentRequest } from '../../model/newEquipmentRequest';
 import { formatDate } from '@angular/common';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-equipment-form',
@@ -15,7 +17,7 @@ export class EquipmentFormComponent implements OnInit{
   newEquipmentForm!: FormGroup;
   equipmentCategories: EquipmentType[] = []
 
-  constructor(private fb: FormBuilder, private equipmentService: EquipmentService){}
+  constructor(private fb: FormBuilder, private equipmentService: EquipmentService, private router: Router, private snackbar: MatSnackBar){}
 
   ngOnInit(): void {
     this.newEquipmentForm = this.fb.group({
@@ -42,8 +44,14 @@ export class EquipmentFormComponent implements OnInit{
     if (this.newEquipmentForm.valid){
       this.equipmentService.createEquipment(request).subscribe((res) => {
         if (res.id != null){
+          this.snackbar.open(`Equipment created sucessfully with S/N: ${res.sn} `, '', {
+            duration: 5000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top'
+          })
           console.log('Equipment created sucessfully ! ', request)
           console.log('Data of Equipment created', res)
+          this.router.navigateByUrl('/equipments');
         }
       })
     }
