@@ -4,7 +4,7 @@ import { EquipmentType } from '../../model/equipmentType.';
 import { EquipmentService } from '../../services/equipment.service';
 import { NewEquipmentRequest } from '../../model/newEquipmentRequest';
 import { formatDate, Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -14,27 +14,24 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class EquipmentFormComponent implements OnInit{
 
-  newEquipmentForm!: FormGroup;
+  equipmentForm!: FormGroup;
   equipmentCategories: EquipmentType[] = []
+
+  isEditMode = false;
+  equipmentId?: string;
 
   constructor(private fb: FormBuilder, 
               private equipmentService: EquipmentService, 
               private router: Router, 
               private snackbar: MatSnackBar,
-              private location: Location ){}
+              private location: Location,
+              private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.newEquipmentForm = this.fb.group({
-      id: [''],
-      description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(150)]],
-      brand: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-      model: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
-      sn: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
-      equipment_category_id: ['', Validators.required],
-      createdAt: [new Date(), Validators.required],
-      isActive: [null],
-      updatedAt: [null]
-    })
+    this.equipmentId = this.route.snapshot.paramMap.get('id') || undefined;
+    this.isEditMode = !!this.equipmentId;
+
+    this.initializeForm();
 
     this.equipmentService.getEquipmentCategories().subscribe((res) => {
       this.equipmentCategories = res;
@@ -42,28 +39,57 @@ export class EquipmentFormComponent implements OnInit{
   }
 
   onSave(){
-    const request: NewEquipmentRequest = {
-      ...this.newEquipmentForm.value,
-      createdAt: formatDate(this.newEquipmentForm.value.createdAt, "yyyy-MM-dd HH:mm:ss", 'en-US')
+    if (!this.isEditMode){
+      const request: NewEquipmentRequest = {
+      ...this.equipmentForm.value,
+      createdAt: formatDate(this.equipmentForm.value.createdAt, "yyyy-MM-dd HH:mm:ss", 'en-US')
     }
 
-    if (this.newEquipmentForm.valid){
-      this.equipmentService.createEquipment(request).subscribe((res) => {
-        if (res.id != null){
-          this.snackbar.open(`Equipment created sucessfully with S/N: ${res.sn} `, '', {
-            duration: 5000,
-            horizontalPosition: 'right',
-            verticalPosition: 'top'
-          })
-          console.log('Equipment created sucessfully ! ', request)
-          console.log('Data of Equipment created', res)
-          this.router.navigateByUrl('/equipments');
-        }
-      })
+      if (this.equipmentForm.valid){
+        this.equipmentService.createEquipment(request).subscribe((res) => {
+          if (res.id != null){
+            this.snackbar.open(`Equipment created sucessfully with S/N: ${res.sn} `, '', {
+              duration: 5000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            })
+            console.log('Equipment created sucessfully ! ', request)
+            console.log('Data of Equipment created', res)
+            this.router.navigateByUrl('/equipments');
+          }
+        })
+      }
     }
   }
 
   onCancel(){
     this.location.back();
+  }
+
+  initializeForm(){
+    this.equipmentForm = this.fb.group({
+      id: [''],
+      description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(150)]],
+      brand: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
+      model: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+      sn: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
+      equipment_category_id: ['', Validators.required],
+      createdAt: [''],
+      status_id: [''],
+      updatedAt: ['']
+    })
+  }
+
+  loadEquipment(id: string){
+    this.equipmentService.findById(id).subscribe(equipment => {
+      this.equipmentForm.patchValue({
+        description: equipment.description,
+        brand: equipment.brand,
+        model: equipment.model,
+        sn: equipment.sn,
+        equipment_category_id: equipment.equipmentType.id,
+        equipment_status_id: equipment.statusEquipment.id
+      })
+    });
   }
 }

@@ -5,7 +5,8 @@ import { EquipmentFormComponent } from './components/equipment-form/equipment-fo
 
 const routes: Routes = [
   { path: 'equipments', component: EquipmentsListComponent },
-  { path: 'new-equipment', component: EquipmentFormComponent}
+  { path: 'new-equipment', component: EquipmentFormComponent},
+  { path: 'equipments/edit/:id', component: EquipmentFormComponent}
 ];
 
 @NgModule({

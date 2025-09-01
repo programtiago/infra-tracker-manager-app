@@ -30,4 +30,8 @@ export class EquipmentService {
   createEquipment(request: NewEquipmentRequest): Observable<Equipment>{
     return this.http.post<Equipment>(`${API_URL}/equipments/new`, request);
   }
+
+  findById(id: string): Observable<Equipment>{
+    return this.http.get<Equipment>(`${API_URL}/equipments/${id}`)
+  }
 }
