@@ -6,20 +6,6 @@ mat-drawer-container {
     }
 }
 
-.mat-drawer.mat-drawer-side.sidenav.collapsed {
-  width: 60px;
-
-  a.mat-list-item {
-    justify-content: center;
-    padding: 12px 0;
-    font-size: 0;
-  }
-
-  a.mat-list-item::before {
-    font-size: 20px; 
-  }
-}
-
 .mat-drawer-side {
     background-color: black !important;
     color: white !important;
@@ -90,6 +76,8 @@ a.mat-mdc-list-item mat-icon {
         height: 25px;
     }
 }
+
+
 
 
 

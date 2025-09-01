@@ -19,3 +19,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ::ng-deep .mat-mdc-list-item .mat-mdc-list-item-icon {
   color: white !important;
 }
+
+.mat-mdc-menu-panel {
+  background-color: black !important;
+}
+
+  .mat-mdc-menu-item-text {
+    color: white !important;
+    font-size: 17px !important;
+  }

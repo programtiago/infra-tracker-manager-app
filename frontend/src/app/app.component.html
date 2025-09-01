@@ -3,7 +3,7 @@
   <mat-drawer-container autosize>
     <mat-drawer #drawer mode="side">
       <mat-nav-list>
-        <button class="nav-button" mat-button [matMenuTriggerFor]="equipments"><mat-icon matListIcon>hardware</mat-icon><span>Equipments</span></button>
+        <button class="nav-button" mat-button [matMenuTriggerFor]="equipments" xPosition="after" yPosition="below"><mat-icon matListIcon>hardware</mat-icon><span>Equipments</span></button>
         <button class="nav-button" mat-button [matMenuTriggerFor]="locations"><mat-icon matListIcon>my_location</mat-icon><span>Locations</span></button>
 
         <mat-menu #equipments="matMenu" xPosition="after">
