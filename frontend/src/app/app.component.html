@@ -1,23 +1,41 @@
 <div class="app-container">
   <app-toolbar (toggleDrawer)="drawer.toggle()"></app-toolbar>
+
   <mat-drawer-container autosize>
-    <mat-drawer #drawer mode="side">
+    <mat-drawer #drawer mode="side" opened class="app-sidenav">
       <mat-nav-list>
-        <button class="nav-button" mat-button [matMenuTriggerFor]="equipments" xPosition="after" yPosition="below"><mat-icon matListIcon>hardware</mat-icon><span>Equipments</span></button>
-        <button class="nav-button" mat-button [matMenuTriggerFor]="locations"><mat-icon matListIcon>my_location</mat-icon><span>Locations</span></button>
+        
+        <div class="nav-item">
+          <button mat-button class="nav-button" (click)="equipmentsOpen = !equipmentsOpen">
+            <mat-icon>hardware</mat-icon>
+            <span>Equipments</span>
+            <mat-icon class="expand-icon">
+              {{ equipmentsOpen ? 'expand_less' : 'expand_more' }}
+            </mat-icon>
+          </button>
+          <div class="submenu" *ngIf="equipmentsOpen">
+            <a mat-list-item routerLink="/equipments">List Equipments</a>
+            <a mat-list-item routerLink="/equipments/new">New Equipment</a>
+          </div>
+        </div>
 
-        <mat-menu #equipments="matMenu" xPosition="after">
-          <button mat-menu-item routerLink="/equipments">List Equipments</button>
-          <button mat-menu-item>New Equipment</button>
-        </mat-menu>
+        <div class="nav-item">
+          <button mat-button class="nav-button" (click)="locationsOpen = !locationsOpen">
+            <mat-icon>my_location</mat-icon>
+            <span>Locations</span>
+            <mat-icon class="expand-icon">
+              {{ locationsOpen ? 'expand_less' : 'expand_more' }}
+            </mat-icon>
+          </button>
+          <div class="submenu" *ngIf="locationsOpen">
+            <a mat-list-item routerLink="/locations">List Locations</a>
+          </div>
+        </div>
 
-        <mat-menu #locations="matMenu">
-          <button mat-menu-item>List Locations</button>
-        </mat-menu>
+        <a mat-list-item routerLink="/equipments">X</a>
+        <a mat-list-item routerLink="/equipments">Y</a>
+        <a mat-list-item routerLink="/equipments">Z</a>
 
-        <a mat-list-item routerLink="/equipments"><span>X</span></a>
-        <a mat-list-item routerLink="/equipments"><span>Y</span></a>
-        <a mat-list-item routerLink="/equipments"><span>Z</span></a>
       </mat-nav-list>
     </mat-drawer>
 
@@ -25,5 +43,14 @@
       <router-outlet />
     </div>
   </mat-drawer-container>
+
+   <mat-menu #equipments="matMenu" panelClass="drawer-menu-panel">
+          <button mat-menu-item routerLink="/equipments">List Equipments</button>
+          <button mat-menu-item>New Equipment</button>
+        </mat-menu>
+
+    <mat-menu #locations="matMenu">
+          <button mat-menu-item>List Locations</button>
+    </mat-menu>
 </div>
 

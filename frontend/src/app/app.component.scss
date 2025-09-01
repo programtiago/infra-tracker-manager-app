@@ -20,7 +20,7 @@ mat-drawer-container {
 
     .mat-mdc-list-item {
         border-radius: 8px !important;
-        margin: 4px 8px !important;
+        margin: 0 !important;
 
         .mat-mdc-list-item-icon {
             color: white !important;
@@ -30,6 +30,11 @@ mat-drawer-container {
             background-color: #222 !important;
         }
     }
+}
+
+::ng-deep .submenu .mat-mdc-list-item,
+::ng-deep .submenu .mat-mdc-list-item .mdc-list-item__primary-text {
+  color: white !important;
 }
 
 .mat-drawer-container {
@@ -45,23 +50,27 @@ a.mat-mdc-list-item mat-icon {
   color: white !important;
 }
 
+
 .nav-button {
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: flex-start;
     text-align: left;
-    padding: 0.5rem 1rem;
-    margin: 0.2rem 0;
+    padding: 0.25rem 1rem;
+    margin: 0 !important;
     border-radius: 8px;
 }
 
 .mat-mdc-nav-list {
-    :hover {
-        background-color: #424242;
-    }
+    padding: 0 !important;
+    margin: 0 !important;
 
     button {
+        color: white;
+    }
+
+    .submenu {
         color: white;
     }
 
@@ -76,6 +85,8 @@ a.mat-mdc-list-item mat-icon {
         height: 25px;
     }
 }
+
+
 
 
 

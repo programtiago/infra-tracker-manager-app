@@ -13,6 +13,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     overflow: hidden;
 }
 
+//style text and icon inside sidenav
 ::ng-deep .mat-mdc-list-item,
 ::ng-deep .mat-mdc-list-item .mat-mdc-list-item-title,
 ::ng-deep .mat-mdc-list-item .mat-mdc-list-item-line,
@@ -20,11 +21,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: white !important;
 }
 
+//mat-menu that opens when clicked on a mat list item
 .mat-mdc-menu-panel {
   background-color: black !important;
 }
 
-  .mat-mdc-menu-item-text {
-    color: white !important;
-    font-size: 17px !important;
-  }
+//mat menu - on sidenav element
+.mat-mdc-menu-item-text {
+  color: white !important;
+  font-size: 17px !important;
+}
+
+.cdk-overlay-container {
+  margin-left: 180px !important;
+}
+
