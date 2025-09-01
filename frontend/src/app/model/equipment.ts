@@ -1,6 +1,7 @@
 import { StatusEquipment } from "./status-equipment";
 
 export interface Equipment {
+  id: string;
   description: string;
   brand: string;
   model: string;
