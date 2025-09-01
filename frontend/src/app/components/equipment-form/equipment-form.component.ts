@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-equipment-form',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './equipment-form.component.scss'
 })
 export class EquipmentFormComponent {
+
+  newEquipmentForm!: FormGroup;
+
+  constructor(private fb: FormBuilder){}
 
 }

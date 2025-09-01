@@ -8,4 +8,5 @@ export interface Equipment {
   isActive: boolean;
   createdAt: string;
   statusEquipment: StatusEquipment;
+  updatedAt: Date
 }

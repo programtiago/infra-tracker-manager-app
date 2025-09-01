@@ -30,13 +30,11 @@ export class EquipmentsListComponent implements OnInit{
 
   getStatusDescription(id: string): string{
     if (this.statusDescriptions[id]) {
-    return this.statusDescriptions[id]; // return cached value
+      return this.statusDescriptions[id];
   }
 
-  // initially set loading
   this.statusDescriptions[id] = 'Loading...';
 
-  // fetch status asynchronously
   this.equipmentService.getStatusDescription(id).subscribe(
     (res) => this.statusDescriptions[id] = res.description,
     (err) => this.statusDescriptions[id] = 'Unknown'
