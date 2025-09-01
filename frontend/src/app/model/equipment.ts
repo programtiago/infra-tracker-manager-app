@@ -10,6 +10,6 @@ export interface Equipment {
   isActive: boolean;
   createdAt: string;
   statusEquipment: StatusEquipment;
-  equipmentType: EquipmentType;
+  equipment_category_id: EquipmentType;
   updatedAt: Date
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Equipment } from '../../model/equipment';
 import { EquipmentService } from '../../services/equipment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-equipments-list',
@@ -16,7 +17,7 @@ export class EquipmentsListComponent implements OnInit{
 
   equipments: Equipment[] = []
 
-  constructor(private equipmentService: EquipmentService){
+  constructor(private equipmentService: EquipmentService, private router: Router){
     this.equipmentService.getAll().subscribe((res) => {
       this.equipments = res;
     })
@@ -60,7 +61,7 @@ export class EquipmentsListComponent implements OnInit{
     }
   }
 
-  openEditMode(){
-    console.log("It's just a test")
+  openEditMode(id: string){
+    this.router.navigate(['/equipments/edit', id])
   }
 }

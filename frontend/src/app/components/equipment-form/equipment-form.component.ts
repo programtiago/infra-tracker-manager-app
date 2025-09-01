@@ -18,7 +18,7 @@ export class EquipmentFormComponent implements OnInit{
   equipmentCategories: EquipmentType[] = []
 
   isEditMode = false;
-  equipmentId?: string;
+  equipmentId: string | null = null;
 
   constructor(private fb: FormBuilder, 
               private equipmentService: EquipmentService, 
@@ -28,10 +28,14 @@ export class EquipmentFormComponent implements OnInit{
               private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.equipmentId = this.route.snapshot.paramMap.get('id') || undefined;
+    this.equipmentId = this.route.snapshot.paramMap.get('id');
     this.isEditMode = !!this.equipmentId;
 
     this.initializeForm();
+
+    if (this.isEditMode && this.equipmentId){
+      this.loadEquipment(this.equipmentId)
+    }
 
     this.equipmentService.getEquipmentCategories().subscribe((res) => {
       this.equipmentCategories = res;
@@ -56,6 +60,14 @@ export class EquipmentFormComponent implements OnInit{
             console.log('Equipment created sucessfully ! ', request)
             console.log('Data of Equipment created', res)
             this.router.navigateByUrl('/equipments');
+          }
+        })
+      }
+    }else{
+      if (this.equipmentId){
+        this.equipmentService.updateEquipment(this.equipmentId, this.equipmentForm.value).subscribe((res) => {
+          if (res.id != null){
+            console.log('Data update sucessfully', res)
           }
         })
       }
@@ -87,8 +99,10 @@ export class EquipmentFormComponent implements OnInit{
         brand: equipment.brand,
         model: equipment.model,
         sn: equipment.sn,
-        equipment_category_id: equipment.equipmentType.id,
-        equipment_status_id: equipment.statusEquipment.id
+        equipment_category_id: equipment.equipment_category_id,
+        status_id: equipment.statusEquipment?.id || '',
+        createdAt: equipment.createdAt,
+        updatedAt: equipment.updatedAt
       })
     });
   }

@@ -5,21 +5,33 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Description</mat-label>
                     <input matInput formControlName="description">
+                    <mat-error *ngIf="equipmentForm.get('description')?.hasError('required')">
+                        Description is required
+                    </mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Brand</mat-label>
                     <input matInput formControlName="brand">
+                    <mat-error *ngIf="equipmentForm.get('description')?.hasError('required')">
+                        Brand is required
+                    </mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Model</mat-label>
                     <input matInput formControlName="model">
+                    <mat-error *ngIf="equipmentForm.get('description')?.hasError('required')">
+                        Model is required
+                    </mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
                     <mat-label>S/N</mat-label>
                     <input matInput formControlName="sn">
+                    <mat-error *ngIf="equipmentForm.get('description')?.hasError('required')">
+                        S/N is required
+                    </mat-error>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill">
@@ -31,7 +43,9 @@
             </form>
         </mat-card-content>
         <mat-card-actions>
-            <button class="btn-create" mat-raised-button (click)="onSave()">Save</button>
+            <button class="btn-create" mat-raised-button (click)="onSave()">
+                {{ isEditMode ? 'Update' : 'Save' }}
+            </button>
             <button class="btn-cancel" mat-raised-button (click)="onCancel()">Cancel</button>
         </mat-card-actions>
     </mat-card>

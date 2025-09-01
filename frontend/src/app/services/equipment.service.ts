@@ -34,4 +34,8 @@ export class EquipmentService {
   findById(id: string): Observable<Equipment>{
     return this.http.get<Equipment>(`${API_URL}/equipments/${id}`)
   }
+
+  updateEquipment(id: string, request: NewEquipmentRequest){
+    return this.http.put<NewEquipmentRequest>(`${API_URL}/equipments/${id}`, request)
+  }
 }
