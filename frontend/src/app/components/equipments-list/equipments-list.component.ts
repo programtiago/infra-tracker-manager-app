@@ -59,4 +59,8 @@ export class EquipmentsListComponent implements OnInit{
         return 'grey'    
     }
   }
+
+  openEditMode(){
+    console.log("It's just a test")
+  }
 }

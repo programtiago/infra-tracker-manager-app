@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EquipmentType } from '../../model/equipmentType.';
 import { EquipmentService } from '../../services/equipment.service';
 import { NewEquipmentRequest } from '../../model/newEquipmentRequest';
-import { formatDate } from '@angular/common';
+import { formatDate, Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -17,7 +17,11 @@ export class EquipmentFormComponent implements OnInit{
   newEquipmentForm!: FormGroup;
   equipmentCategories: EquipmentType[] = []
 
-  constructor(private fb: FormBuilder, private equipmentService: EquipmentService, private router: Router, private snackbar: MatSnackBar){}
+  constructor(private fb: FormBuilder, 
+              private equipmentService: EquipmentService, 
+              private router: Router, 
+              private snackbar: MatSnackBar,
+              private location: Location ){}
 
   ngOnInit(): void {
     this.newEquipmentForm = this.fb.group({
@@ -27,7 +31,9 @@ export class EquipmentFormComponent implements OnInit{
       model: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       sn: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
       equipment_category_id: ['', Validators.required],
-      createdAt: [new Date(), Validators.required]
+      createdAt: [new Date(), Validators.required],
+      isActive: [null],
+      updatedAt: [null]
     })
 
     this.equipmentService.getEquipmentCategories().subscribe((res) => {
@@ -58,6 +64,6 @@ export class EquipmentFormComponent implements OnInit{
   }
 
   onCancel(){
-
+    this.location.back();
   }
 }
