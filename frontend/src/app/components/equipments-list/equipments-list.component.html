@@ -33,7 +33,8 @@
                         <td mat-cell *matCellDef="let equipment">
                             <button mat-icon-button
                                 [matTooltip]="getStatusDescription(equipment.status_id)"
-                                matTooltipPosition="right">
+                                matTooltipPosition="right"
+                                [style.color]="getStatusColor(statusDescriptions[equipment.status_id])">
                                 <mat-icon class="info-icon">info</mat-icon>
                             </button>
                         </td>

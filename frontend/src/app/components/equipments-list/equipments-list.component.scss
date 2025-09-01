@@ -71,3 +71,19 @@
         margin-top: 5em;
     } 
 }
+
+.status-available mat-icon {
+    color: green !important;
+}
+
+.status-allocated mat-icon {
+    color: orange;
+}
+
+.status-warranty mat-icon {
+    color: orange;
+}
+
+.status-other mat-icon {
+  color: red;
+}

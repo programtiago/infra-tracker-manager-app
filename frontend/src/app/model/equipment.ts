@@ -1,3 +1,5 @@
+import { StatusEquipment } from "./status-equipment";
+
 export interface Equipment {
   description: string;
   brand: string;
@@ -5,5 +7,5 @@ export interface Equipment {
   sn: string;
   isActive: boolean;
   createdAt: string;
-  statusEquipment: string;
+  statusEquipment: StatusEquipment;
 }

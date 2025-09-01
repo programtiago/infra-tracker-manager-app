@@ -8,12 +8,14 @@ import { SharedModule } from './shared/shared.module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { EquipmentsListComponent } from './components/equipments-list/equipments-list.component';
 import { provideHttpClient } from '@angular/common/http';
+import { EquipmentFormComponent } from './components/equipment-form/equipment-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    EquipmentsListComponent
+    EquipmentsListComponent,
+    EquipmentFormComponent
   ],
   imports: [
     BrowserModule,
