@@ -18,15 +18,3 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex-direction: row;
     flex-grow: 1;
 }
-
-.slide-drawer {
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-}
-
-mat-drawer-container.mat-drawer-container.opened .content {
-  margin-left: 0;
-}
