@@ -18,4 +18,6 @@ VALUES
 ('25165b4e-f2c2-4b6e-8d9b-42cc38464594', 'Scanner Zebra MC330M', 'Zebra', 'MC330M', '21300523021615', true, CURRENT_TIMESTAMP, 'c5e79d7a-7bef-47c5-b2cd-4b3a41b0f317', '4bda014b-7446-4b16-8ed2-67d8b936b895', null),
 ('00c085ac-2cf6-43e9-b226-e084e0d15926', 'Switch TP-Link TL-SG1005D', 'TP-Link', 'TL-SG1005D', '22194L8008225', true, CURRENT_TIMESTAMP, 'c5e79d7a-7bef-47c5-b2cd-4b3a41b0f317', '6c46430f-e411-46a1-969f-f5d9ba4fc416', null),
 ('4d06036d-c62e-412c-a9fa-00600ec8031d', 'Printer Intermec PC43T', 'Intermec', 'PC43T', '270C2130095', true, CURRENT_TIMESTAMP, 'c5e79d7a-7bef-47c5-b2cd-4b3a41b0f317', 'a4689f03-0309-4dd3-8360-19f25f5b3e29', null),
-('2f797444-275f-464e-8b2d-d24235ebad2f', 'Laptop HP Probook 450 G8', 'HP', '450 G8', '5CD1166T7Y', true, CURRENT_TIMESTAMP, 'c5e79d7a-7bef-47c5-b2cd-4b3a41b0f317', 'c2852c63-c047-4e4a-8376-0f1fc0579a0c', null);
+('2f797444-275f-464e-8b2d-d24235ebad2f', 'Laptop HP Probook 450 G8', 'HP', '450 G8', '5CD1166T7Y', true, CURRENT_TIMESTAMP, 'c5e79d7a-7bef-47c5-b2cd-4b3a41b0f317', 'c2852c63-c047-4e4a-8376-0f1fc0579a0c', null),
+('b7f8003c-ad1b-47a8-af4c-7a24e391f5f1', 'Scanner Zebra DS2208-SR BLACK', 'Zebra', 'DS2208', 'S22180010552218', true, CURRENT_TIMESTAMP, 'dcf3d408-7653-4135-bcf6-df1eb2267163', '4bda014b-7446-4b16-8ed2-67d8b936b895', null),
+('4509d0e2-25cd-4b20-a727-ff4095b49a47', 'Scanner Zebra DS2208-SR BLACK', 'Zebra', 'DS2208', 'S22180010552219', true, CURRENT_TIMESTAMP, '49a744a5-2a50-420d-9166-0c3b9283f82c', '4bda014b-7446-4b16-8ed2-67d8b936b895', null);
