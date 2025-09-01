@@ -40,7 +40,7 @@ export class EquipmentsListComponent implements OnInit{
     (err) => this.statusDescriptions[id] = 'Unknown'
   );
 
-  return this.statusDescriptions[id]; // initially returns 'Loading...'
+  return this.statusDescriptions[id];
   }
 
   getStatusColor(description: string): string {
