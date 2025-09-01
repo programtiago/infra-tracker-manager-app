@@ -13,8 +13,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     overflow: hidden;
 }
 
-.mat-drawer-container {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
+::ng-deep .mat-mdc-list-item,
+::ng-deep .mat-mdc-list-item .mat-mdc-list-item-title,
+::ng-deep .mat-mdc-list-item .mat-mdc-list-item-line,
+::ng-deep .mat-mdc-list-item .mat-mdc-list-item-icon {
+  color: white !important;
 }
