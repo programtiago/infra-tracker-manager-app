@@ -49,6 +49,8 @@ export class EquipmentFormComponent implements OnInit{
       createdAt: formatDate(this.equipmentForm.value.createdAt, "yyyy-MM-dd HH:mm:ss", 'en-US')
     }
 
+    console.log("Date", request.createdAt)
+
       if (this.equipmentForm.valid){
         this.equipmentService.createEquipment(request).subscribe((res) => {
           if (res.id != null){
@@ -68,6 +70,12 @@ export class EquipmentFormComponent implements OnInit{
         this.equipmentService.updateEquipment(this.equipmentId, this.equipmentForm.value).subscribe((res) => {
           if (res.id != null){
             console.log('Data update sucessfully', res)
+            this.router.navigateByUrl('/equipments');
+            this.snackbar.open(`Equipment updated sucessfully with S/N: ${res.sn} `, '', {
+              duration: 5000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            })
           }
         })
       }
@@ -86,7 +94,7 @@ export class EquipmentFormComponent implements OnInit{
       model: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       sn: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
       equipment_category_id: ['', Validators.required],
-      createdAt: [''],
+      createdAt: [],
       status_id: [''],
       updatedAt: ['']
     })
