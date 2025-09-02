@@ -1,3 +1,4 @@
+<!--
 <mat-card>
     <mat-card-header>
         <mat-card-title>
@@ -8,9 +9,6 @@
 
     <mat-card-content>
         <p>{{ data.message }}</p>
-        <small *ngIf="data.details" class="error-details">
-            {{ data.details }}
-        </small>
     </mat-card-content>
 
     <mat-card-actions>
@@ -19,3 +17,16 @@
         </button>
     </mat-card-actions>
 </mat-card>
+-->
+<h2 mat-dialog-title>
+  <mat-icon color="warn">error</mat-icon>
+  {{ data.title || 'Error' }}
+</h2>
+
+<mat-dialog-content>
+  <p>{{ data.message }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="warn" (click)="onClose()">Close</button>
+</mat-dialog-actions>

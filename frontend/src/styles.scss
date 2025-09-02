@@ -31,3 +31,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: white !important;
   font-size: 17px !important;
 }
+
+
+.mat-mdc-dialog-surface {
+  background-color: #2e2e2e !important;
+  color: white !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+}
+
+h2.mat-mdc-dialog-title {
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    color: white !important;
+}
+
+mat-dialog-content p {
+    font-size: 1.1rem !important;
+    color: white !important;
+    padding-top: 0.5em !important;
+}

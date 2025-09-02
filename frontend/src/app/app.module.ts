@@ -7,8 +7,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { SharedModule } from './shared/shared.module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { EquipmentsListComponent } from './components/equipments-list/equipments-list.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { EquipmentFormComponent } from './components/equipment-form/equipment-form.component';
+import { errorInterceptor } from './core/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { EquipmentFormComponent } from './components/equipment-form/equipment-fo
   ],
   providers: [
     provideAnimationsAsync(),
-    provideHttpClient()
+    provideHttpClient(
+      withInterceptors([errorInterceptor])
+    )
   ],
   bootstrap: [AppComponent]
 })

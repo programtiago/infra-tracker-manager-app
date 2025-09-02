@@ -13,6 +13,7 @@ export class DialogErrorService {
   openErrorDialog(message: string, title: string, details?: string): void {
     this.dialog.open<DialogErrorComponent, DialogErrorData>(DialogErrorComponent, {
       width: '420px',
+      height: '250px',
       data: { title, message, details }
     });
   }

@@ -1,6 +1,15 @@
-mat-card {
-    max-width: 400px;
+/*
+:host {
+    display: block;
     background-color: #2e2e2e;
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+mat-card {
+    background: transparent;
+    box-shadow: none;
 }
 
 mat-card-title {
@@ -11,7 +20,7 @@ mat-card-title {
     color: #c62828;
 }
 
-.error-details {
-    color: #777;
-    font-size: 0.5rem;
+.mat-mdc-card-content {
+    height: 100%;
 }
+    */
