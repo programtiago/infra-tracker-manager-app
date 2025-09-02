@@ -6,7 +6,8 @@
 
 .card-equipment-form {
     background-color: #2e2e2e;
-    border-radius: 12px;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
 @media screen and (min-width: 480px) and (max-width: 1536px) {
@@ -18,7 +19,7 @@
 
 @media screen and (min-width: 1537px) and (max-width: 2560px) {
     .card-equipment-form {
-        width: 55%;
+        width: 45%;
     }
 
     mat-card {
@@ -37,4 +38,30 @@
     display: flex;
     justify-content: center;
     margin-bottom: 0.5em;
+}
+
+mat-card-header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+mat-card-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+}
+
+mat-card-subtitle {
+    font-size: 0.9rem;
+    color: white;
+}
+
+.btn-create {
+    color: black;
+}
+
+.btn-cancel {
+    color: black;
 }

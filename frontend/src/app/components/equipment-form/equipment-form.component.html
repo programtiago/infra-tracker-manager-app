@@ -1,8 +1,8 @@
 <div class="equipment-form-container">
     <mat-card class="card-equipment-form">
-        <mat-card-header style="display: flex; justify-content: center; align-items: center; color: white;">
-            <mat-card-title style="padding-left: 1.5em;">{{ isEditMode ? 'Edit Equipment' : 'Add Equipment' }}</mat-card-title>
-            <mat-card-subtitle style="color: white;">Please fill in all required fields</mat-card-subtitle>
+        <mat-card-header>
+            <mat-card-title>{{ isEditMode ? 'Edit Equipment' : 'Add Equipment' }}</mat-card-title>
+            <mat-card-subtitle>Please fill in all required fields</mat-card-subtitle>
         </mat-card-header>
 
         <mat-divider></mat-divider>
@@ -55,11 +55,11 @@
             </form>
         </mat-card-content>
         <mat-card-actions>
-            <button style="color: black;" class="btn-create" mat-raised-button (click)="onSave()">
-                <mat-icon style="color: black">save</mat-icon> {{ isEditMode ? 'Update' : 'Save' }}
+            <button class="btn-create" mat-raised-button (click)="onSave()">
+                <mat-icon>save</mat-icon> {{ isEditMode ? 'Update' : 'Save' }}
             </button>
-            <button style="color: black;" class="btn-cancel" mat-raised-button (click)="onCancel()">
-                <mat-icon style="color: black">close</mat-icon>Cancel</button>
+            <button class="btn-cancel" mat-raised-button (click)="onCancel()">
+                <mat-icon>close</mat-icon>Cancel</button>
         </mat-card-actions>
     </mat-card>
 </div>
