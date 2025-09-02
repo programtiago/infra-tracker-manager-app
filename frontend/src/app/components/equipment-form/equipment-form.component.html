@@ -1,10 +1,18 @@
 <div class="equipment-form-container">
     <mat-card class="card-equipment-form">
+        <mat-card-header style="display: flex; justify-content: center; align-items: center; color: white;">
+            <mat-card-title style="padding-left: 1.5em;">{{ isEditMode ? 'Edit Equipment' : 'Add Equipment' }}</mat-card-title>
+            <mat-card-subtitle style="color: white;">Please fill in all required fields</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
         <mat-card-content>
             <form [formGroup]="equipmentForm">
                 <mat-form-field appearance="fill">
                     <mat-label>Description</mat-label>
                     <input matInput formControlName="description">
+                    <mat-icon matSuffix>description</mat-icon>
                     <mat-error *ngIf="equipmentForm.get('description')?.hasError('required')">
                         Description is required
                     </mat-error>
@@ -13,7 +21,8 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Brand</mat-label>
                     <input matInput formControlName="brand">
-                    <mat-error *ngIf="equipmentForm.get('description')?.hasError('required')">
+                     <mat-icon matSuffix>business</mat-icon>
+                    <mat-error *ngIf="equipmentForm.get('brand')?.hasError('required')">
                         Brand is required
                     </mat-error>
                 </mat-form-field>
@@ -21,7 +30,8 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Model</mat-label>
                     <input matInput formControlName="model">
-                    <mat-error *ngIf="equipmentForm.get('description')?.hasError('required')">
+                    <mat-icon matSuffix>devices</mat-icon>
+                    <mat-error *ngIf="equipmentForm.get('model')?.hasError('required')">
                         Model is required
                     </mat-error>
                 </mat-form-field>
@@ -29,7 +39,8 @@
                 <mat-form-field appearance="fill">
                     <mat-label>S/N</mat-label>
                     <input matInput formControlName="sn">
-                    <mat-error *ngIf="equipmentForm.get('description')?.hasError('required')">
+                    <mat-icon matSuffix>qr_code</mat-icon>
+                    <mat-error *ngIf="equipmentForm.get('sn')?.hasError('required')">
                         S/N is required
                     </mat-error>
                 </mat-form-field>
@@ -39,14 +50,16 @@
                     <mat-select formControlName="equipment_category_id">
                         <mat-option *ngFor="let c of equipmentCategories" [value]="c.id">{{ c.description }}</mat-option>
                     </mat-select>
+                    <mat-icon matSuffix>category</mat-icon>
                 </mat-form-field>
             </form>
         </mat-card-content>
         <mat-card-actions>
-            <button class="btn-create" mat-raised-button (click)="onSave()">
-                {{ isEditMode ? 'Update' : 'Save' }}
+            <button style="color: black;" class="btn-create" mat-raised-button (click)="onSave()">
+                <mat-icon style="color: black">save</mat-icon> {{ isEditMode ? 'Update' : 'Save' }}
             </button>
-            <button class="btn-cancel" mat-raised-button (click)="onCancel()">Cancel</button>
+            <button style="color: black;" class="btn-cancel" mat-raised-button (click)="onCancel()">
+                <mat-icon style="color: black">close</mat-icon>Cancel</button>
         </mat-card-actions>
     </mat-card>
 </div>
